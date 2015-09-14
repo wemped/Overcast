@@ -13,6 +13,7 @@ class LoginViewController: UIViewController, SPTAudioStreamingPlaybackDelegate {
     let ClientID = "eca84f057c5e43f7a990d771752d2885"
     let CallBackURL = "spotifysdktest://returnafterlogin"
     /*You will need to change these for testing on localhost or your own phone!*/
+    /*Also needs to change in AppDelegate*/
     let TokenSwapURL = "http://10.0.0.11/swap"
     let TokenRefreshServiceURL = "http://10.0.0.11:1234/refresh"
     var session: SPTSession!
