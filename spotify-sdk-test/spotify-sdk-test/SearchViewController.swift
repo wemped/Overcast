@@ -17,6 +17,7 @@ class SearchViewController: UIViewController,UITableViewDataSource, UITableViewD
     var searchResults = [SPTPartialObject]()
     var tabController : TabBarController?
     var lastSearchType : SPTSearchQueryType?
+    var lastSearchString : String?
     
     /*
         Set session
@@ -75,6 +76,11 @@ class SearchViewController: UIViewController,UITableViewDataSource, UITableViewD
         Search tracks/artists/albums depending on the segment control
     */
     func searchBarSearchButtonClicked(searchBar: UISearchBar) {
+        if self.searchBar.text == nil || self.searchBar.text == ""{
+            self.searchResults = [SPTPartialObject]()
+            self.tableView.reloadData()
+            return
+        }
         self.view.endEditing(true)
         let selectedSegmentedControlSelectedTitle = searchTypeSegmentedControl.titleForSegmentAtIndex(searchTypeSegmentedControl.selectedSegmentIndex)
         var searchType : SPTSearchQueryType

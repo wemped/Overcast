@@ -157,8 +157,10 @@ class PlaylistViewController : UIViewController, SPTAudioStreamingPlaybackDelega
     func audioStreaming(audioStreaming: SPTAudioStreamingController!, didStopPlayingTrack trackUri: NSURL!) {
         print("DID STOP PLAYING TRACK")
         if (!self.forced_stop){
-            self.playlist.removeFirst()
-            self.playNextSong()
+            if (self.playlist.count > 0){
+                self.playlist.removeFirst()
+                self.playNextSong()
+            }
         }
         self.forced_stop = false
     }
@@ -169,8 +171,10 @@ class PlaylistViewController : UIViewController, SPTAudioStreamingPlaybackDelega
     */
     func audioStreaming(audioStreaming: SPTAudioStreamingController!, didFailToPlayTrack trackUri: NSURL!) {
         print("DID FAIL TO PLAY TRACK")
-        self.playlist.removeFirst()
-        self.playNextSong()
+        if (self.playlist.count > 0){
+            self.playlist.removeFirst()
+            self.playNextSong()
+        }
     }
 //    func audioStreaming(audioStreaming: SPTAudioStreamingController!, didStartPlayingTrack trackUri: NSURL!) {
 //        print("DID START PLAYING TRACK")
