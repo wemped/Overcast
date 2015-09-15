@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SearchViewController: UIViewController,UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate, UISearchDisplayDelegate{
+class SearchViewController: UIViewController,UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate, UISearchDisplayDelegate, ShowArtistOrAlbumDetailsDelegate{
     
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var searchTypeSegmentedControl: UISegmentedControl!
@@ -34,6 +34,10 @@ class SearchViewController: UIViewController,UITableViewDataSource, UITableViewD
     }
     
     // MARK: - Table View functions
+    func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+        
+        
+    }
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
        return self.searchResults.count
     }
@@ -41,7 +45,6 @@ class SearchViewController: UIViewController,UITableViewDataSource, UITableViewD
         Setup search results cell depending on search type
     */
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-
         if self.lastSearchType == SPTSearchQueryType.QueryTypeTrack{
             let dequeued : AnyObject = tableView.dequeueReusableCellWithIdentifier("searchResultTrackCell",forIndexPath: indexPath)
             let cell = dequeued as! SearchResultTrackTableViewCell
@@ -52,15 +55,18 @@ class SearchViewController: UIViewController,UITableViewDataSource, UITableViewD
             return cell
         } else if self.lastSearchType == SPTSearchQueryType.QueryTypeArtist{
             let dequeued : AnyObject = tableView.dequeueReusableCellWithIdentifier("searchResultArtistOrAlbumCell",forIndexPath: indexPath)
-            let cell = dequeued as! UITableViewCell
+            let cell = dequeued as! SearchResultsArtistOrAlbumTableViewCell
             let artist = searchResults[indexPath.row] as! SPTPartialArtist
-            cell.textLabel!.text = artist.name
+//            cell.selectionStyle = UITableViewCellSelectionStyle.None
+            cell.nameLabel!.text = artist.name
+            cell.moreDetailsDelegate = self
             return cell
         } else{
             let dequeued : AnyObject = tableView.dequeueReusableCellWithIdentifier("searchResultArtistOrAlbumCell",forIndexPath: indexPath)
-            let cell = dequeued as! UITableViewCell
+            let cell = dequeued as! SearchResultsArtistOrAlbumTableViewCell
             let album = searchResults[indexPath.row] as! SPTPartialAlbum
-            cell.textLabel!.text = album.name
+            cell.nameLabel!.text = album.name
+            cell.moreDetailsDelegate = self
             return cell
         }
     }
@@ -122,6 +128,31 @@ class SearchViewController: UIViewController,UITableViewDataSource, UITableViewD
         }
         self.searchBarSearchButtonClicked(self.searchBar)
     }
-    
+    // MARK: - Show Artist Or Album Details Delegate functions
+    func moreDetailsButtonPressedFrom(sender: SearchResultsArtistOrAlbumTableViewCell) {
+        let indexPath = self.tableView.indexPathForCell(sender)
+        if self.lastSearchType == SPTSearchQueryType.QueryTypeArtist{
+            let artist = self.searchResults[indexPath!.row] as! SPTPartialArtist
+            performSegueWithIdentifier("showArtistOrAlbumDetails", sender: artist)
+        }else if self.lastSearchType == SPTSearchQueryType.QueryTypeAlbum{
+            let album = self.searchResults[indexPath!.row] as! SPTPartialAlbum
+            performSegueWithIdentifier("showArtistOrAlbumDetails", sender: album)
+        }
+    }
     // MARK: - Navigation
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "showArtistOrAlbumDetails"{
+            let navigationController = segue.destinationViewController as! UINavigationController
+            let detailsViewController = navigationController.topViewController as! ArtistOrAlbumDetailsTableViewController
+            if let artist = sender as? SPTPartialArtist{
+                detailsViewController.partialArtist = artist
+            }
+            if let album = sender as? SPTPartialAlbum{
+                detailsViewController.partialAlbum = album
+            }
+            detailsViewController.playlistDelegate = tabController!
+            detailsViewController.dismissDelegate = self
+        }
+    }
+    
 }
