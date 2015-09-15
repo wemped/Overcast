@@ -24,23 +24,62 @@
                                     <action selector="loginWithSpotify:" destination="BYZ-38-t0r" eventType="touchUpInside" id="0wG-GL-ulx"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q4b-4O-TdC">
-                                <rect key="frame" x="185" y="266" width="230" height="68"/>
-                                <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="59"/>
-                                <color key="textColor" red="0.97647058819999999" green="0.49803921569999998" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BfZ-J1-IWP">
+                                <rect key="frame" x="20" y="103" width="560" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Confirm Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VF6-ax-0YB">
+                                <rect key="frame" x="20" y="141" width="560" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UDU-0f-H6K">
+                                <rect key="frame" x="20" y="65" width="560" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Register for Overcast" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yty-zf-i0x">
+                                <rect key="frame" x="20" y="28" width="560" height="29"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="72b-Ay-ukf">
+                                <rect key="frame" x="523" y="179" width="57" height="30"/>
+                                <state key="normal" title="Register"/>
+                                <connections>
+                                    <action selector="registerButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Jeh-DR-vHQ"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="BfZ-J1-IWP" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="5Mh-8m-Zr0"/>
+                            <constraint firstItem="yty-zf-i0x" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="8cV-ej-Xri"/>
                             <constraint firstItem="ELd-Dl-3DT" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="9Ck-t7-mAx"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="ELd-Dl-3DT" secondAttribute="bottom" constant="20" id="FFj-oK-zei"/>
-                            <constraint firstItem="q4b-4O-TdC" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="G1E-0s-7Rz"/>
-                            <constraint firstItem="q4b-4O-TdC" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="f1y-ot-VQX"/>
+                            <constraint firstItem="yty-zf-i0x" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" symbolic="YES" id="TCa-4M-di5"/>
+                            <constraint firstItem="yty-zf-i0x" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="Vcb-T1-RYU"/>
+                            <constraint firstItem="UDU-0f-H6K" firstAttribute="top" secondItem="yty-zf-i0x" secondAttribute="bottom" constant="8" id="Vdm-ji-EcE"/>
+                            <constraint firstItem="UDU-0f-H6K" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="WAl-zT-J2g"/>
+                            <constraint firstItem="VF6-ax-0YB" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="de3-NL-lMk"/>
+                            <constraint firstItem="VF6-ax-0YB" firstAttribute="top" secondItem="BfZ-J1-IWP" secondAttribute="bottom" constant="8" symbolic="YES" id="gwN-0s-v9R"/>
+                            <constraint firstItem="UDU-0f-H6K" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="pJ4-du-pzN"/>
+                            <constraint firstItem="72b-Ay-ukf" firstAttribute="top" secondItem="VF6-ax-0YB" secondAttribute="bottom" constant="8" id="rHH-7e-fsW"/>
+                            <constraint firstItem="72b-Ay-ukf" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="skc-qw-qwo"/>
+                            <constraint firstItem="VF6-ax-0YB" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="wT7-AU-bzx"/>
+                            <constraint firstItem="BfZ-J1-IWP" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="wiW-CQ-gkf"/>
+                            <constraint firstItem="BfZ-J1-IWP" firstAttribute="top" secondItem="UDU-0f-H6K" secondAttribute="bottom" constant="8" symbolic="YES" id="wih-DP-QID"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="loginButton" destination="ELd-Dl-3DT" id="JCH-C5-zbu"/>
+                        <outlet property="confirmPasswordTextField" destination="VF6-ax-0YB" id="VPK-N2-pA9"/>
+                        <outlet property="passwordTextField" destination="BfZ-J1-IWP" id="PpH-Et-de6"/>
+                        <outlet property="registerButton" destination="72b-Ay-ukf" id="bJ3-kq-bfm"/>
+                        <outlet property="registerLabel" destination="yty-zf-i0x" id="p9I-dx-79t"/>
+                        <outlet property="spotifyLoginButton" destination="ELd-Dl-3DT" id="Wo5-Hn-IE3"/>
+                        <outlet property="usernameTextField" destination="UDU-0f-H6K" id="cNE-L6-Hbh"/>
                         <segue destination="frB-kr-00q" kind="show" identifier="loginSuccessSegue" id="yGI-iS-TiF"/>
                     </connections>
                 </viewController>
@@ -307,7 +346,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="Gt5-uw-1UD">
+                            <searchBar contentMode="redraw" placeholder="Search" translatesAutoresizingMaskIntoConstraints="NO" id="Gt5-uw-1UD">
                                 <rect key="frame" x="0.0" y="20" width="600" height="44"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <scopeButtonTitles>
@@ -433,6 +472,7 @@
                         <outlet property="searchBar" destination="Gt5-uw-1UD" id="M22-vy-izA"/>
                         <outlet property="searchTypeSegmentedControl" destination="Mbz-ly-rh2" id="X1j-r9-w90"/>
                         <outlet property="tableView" destination="EbW-Hg-jI2" id="1k5-j3-XMX"/>
+                        <segue destination="Bc8-7e-Xi8" kind="presentation" identifier="showArtistOrAlbumDetails" id="Dx0-CP-OPY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="i1f-jt-doT" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -445,7 +485,44 @@
                     </connections>
                 </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="1733" y="148"/>
+            <point key="canvasLocation" x="1711" y="179"/>
+        </scene>
+        <!--Artist Or Album Details Table View Controller-->
+        <scene sceneID="bOR-sP-i4B">
+            <objects>
+                <tableViewController id="f8y-lx-btU" customClass="ArtistOrAlbumDetailsTableViewController" customModule="spotify_sdk_test" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="43" sectionHeaderHeight="28" sectionFooterHeight="28" id="nhz-n0-Jwh">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="43" id="rib-p1-zUW" customClass="SearchResultTrackTableViewCell" customModule="spotify_sdk_test" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="92" width="600" height="43"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="rib-p1-zUW" id="VkK-0n-ad3">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="42"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="f8y-lx-btU" id="d7e-l2-OJo"/>
+                            <outlet property="delegate" destination="f8y-lx-btU" id="RfP-0s-hbH"/>
+                        </connections>
+                    </tableView>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="fln-Il-keE">
+                        <barButtonItem key="leftBarButtonItem" title="Back" id="WDo-RL-hl2">
+                            <connections>
+                                <action selector="backButtonPressed:" destination="f8y-lx-btU" id="im6-QJ-U0e"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zYF-b1-TYr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3206" y="173"/>
         </scene>
         <!--Listen-->
         <scene sceneID="bt3-Li-fdv">
@@ -510,6 +587,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ir3-1W-8Qj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1293" y="1625"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="n4N-xU-hIP">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Bc8-7e-Xi8" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="u1a-in-mnV">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="f8y-lx-btU" kind="relationship" relationship="rootViewController" id="xi8-Vg-yVG"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XiP-VZ-X9j" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2423" y="173"/>
         </scene>
     </scenes>
     <resources>

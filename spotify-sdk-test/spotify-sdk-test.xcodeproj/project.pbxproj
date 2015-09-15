@@ -23,6 +23,22 @@
 		A6E462DC1BA6222C004FB8A9 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6E462DB1BA6222C004FB8A9 /* SearchViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		A6E462DE1BA63CB7004FB8A9 /* SearchResultTrackTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6E462DD1BA63CB7004FB8A9 /* SearchResultTrackTableViewCell.swift */; settings = {ASSET_TAGS = (); }; };
 		A6E462E01BA64CCE004FB8A9 /* SearchResultsArtistOrAlbumTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6E462DF1BA64CCE004FB8A9 /* SearchResultsArtistOrAlbumTableViewCell.swift */; settings = {ASSET_TAGS = (); }; };
+		A6E462F01BA76431004FB8A9 /* SocketAckManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6E462E21BA76431004FB8A9 /* SocketAckManager.swift */; settings = {ASSET_TAGS = (); }; };
+		A6E462F11BA76431004FB8A9 /* SocketAnyEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6E462E31BA76431004FB8A9 /* SocketAnyEvent.swift */; settings = {ASSET_TAGS = (); }; };
+		A6E462F21BA76431004FB8A9 /* SocketEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6E462E41BA76431004FB8A9 /* SocketEngine.swift */; settings = {ASSET_TAGS = (); }; };
+		A6E462F31BA76431004FB8A9 /* SocketEngineClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6E462E51BA76431004FB8A9 /* SocketEngineClient.swift */; settings = {ASSET_TAGS = (); }; };
+		A6E462F41BA76431004FB8A9 /* SocketEventHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6E462E61BA76431004FB8A9 /* SocketEventHandler.swift */; settings = {ASSET_TAGS = (); }; };
+		A6E462F51BA76431004FB8A9 /* SocketFixUTF8.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6E462E71BA76431004FB8A9 /* SocketFixUTF8.swift */; settings = {ASSET_TAGS = (); }; };
+		A6E462F61BA76431004FB8A9 /* SocketIOClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6E462E81BA76431004FB8A9 /* SocketIOClient.swift */; settings = {ASSET_TAGS = (); }; };
+		A6E462F71BA76431004FB8A9 /* SocketIOClientStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6E462E91BA76431004FB8A9 /* SocketIOClientStatus.swift */; settings = {ASSET_TAGS = (); }; };
+		A6E462F81BA76431004FB8A9 /* SocketLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6E462EA1BA76431004FB8A9 /* SocketLogger.swift */; settings = {ASSET_TAGS = (); }; };
+		A6E462F91BA76431004FB8A9 /* SocketPacket.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6E462EB1BA76431004FB8A9 /* SocketPacket.swift */; settings = {ASSET_TAGS = (); }; };
+		A6E462FA1BA76431004FB8A9 /* SocketParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6E462EC1BA76431004FB8A9 /* SocketParser.swift */; settings = {ASSET_TAGS = (); }; };
+		A6E462FB1BA76431004FB8A9 /* SocketTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6E462ED1BA76431004FB8A9 /* SocketTypes.swift */; settings = {ASSET_TAGS = (); }; };
+		A6E462FC1BA76431004FB8A9 /* SwiftRegex.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6E462EE1BA76431004FB8A9 /* SwiftRegex.swift */; settings = {ASSET_TAGS = (); }; };
+		A6E462FD1BA76431004FB8A9 /* WebSocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6E462EF1BA76431004FB8A9 /* WebSocket.swift */; settings = {ASSET_TAGS = (); }; };
+		A6E462FF1BA76855004FB8A9 /* ShowArtistOrAlbumDetailsDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6E462FE1BA76855004FB8A9 /* ShowArtistOrAlbumDetailsDelegate.swift */; settings = {ASSET_TAGS = (); }; };
+		A6E463031BA76CB1004FB8A9 /* ArtistOrAlbumDetailsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6E463021BA76CB0004FB8A9 /* ArtistOrAlbumDetailsTableViewController.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +82,22 @@
 		A6E462DB1BA6222C004FB8A9 /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		A6E462DD1BA63CB7004FB8A9 /* SearchResultTrackTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SearchResultTrackTableViewCell.swift; path = ../SearchResultTrackTableViewCell.swift; sourceTree = "<group>"; };
 		A6E462DF1BA64CCE004FB8A9 /* SearchResultsArtistOrAlbumTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SearchResultsArtistOrAlbumTableViewCell.swift; path = ../SearchResultsArtistOrAlbumTableViewCell.swift; sourceTree = "<group>"; };
+		A6E462E21BA76431004FB8A9 /* SocketAckManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SocketAckManager.swift; path = "../../mean/practice/ios-side/Socket.IO-Client-Swift/SocketIOClientSwift/SocketAckManager.swift"; sourceTree = "<group>"; };
+		A6E462E31BA76431004FB8A9 /* SocketAnyEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SocketAnyEvent.swift; path = "../../mean/practice/ios-side/Socket.IO-Client-Swift/SocketIOClientSwift/SocketAnyEvent.swift"; sourceTree = "<group>"; };
+		A6E462E41BA76431004FB8A9 /* SocketEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SocketEngine.swift; path = "../../mean/practice/ios-side/Socket.IO-Client-Swift/SocketIOClientSwift/SocketEngine.swift"; sourceTree = "<group>"; };
+		A6E462E51BA76431004FB8A9 /* SocketEngineClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SocketEngineClient.swift; path = "../../mean/practice/ios-side/Socket.IO-Client-Swift/SocketIOClientSwift/SocketEngineClient.swift"; sourceTree = "<group>"; };
+		A6E462E61BA76431004FB8A9 /* SocketEventHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SocketEventHandler.swift; path = "../../mean/practice/ios-side/Socket.IO-Client-Swift/SocketIOClientSwift/SocketEventHandler.swift"; sourceTree = "<group>"; };
+		A6E462E71BA76431004FB8A9 /* SocketFixUTF8.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SocketFixUTF8.swift; path = "../../mean/practice/ios-side/Socket.IO-Client-Swift/SocketIOClientSwift/SocketFixUTF8.swift"; sourceTree = "<group>"; };
+		A6E462E81BA76431004FB8A9 /* SocketIOClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SocketIOClient.swift; path = "../../mean/practice/ios-side/Socket.IO-Client-Swift/SocketIOClientSwift/SocketIOClient.swift"; sourceTree = "<group>"; };
+		A6E462E91BA76431004FB8A9 /* SocketIOClientStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SocketIOClientStatus.swift; path = "../../mean/practice/ios-side/Socket.IO-Client-Swift/SocketIOClientSwift/SocketIOClientStatus.swift"; sourceTree = "<group>"; };
+		A6E462EA1BA76431004FB8A9 /* SocketLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SocketLogger.swift; path = "../../mean/practice/ios-side/Socket.IO-Client-Swift/SocketIOClientSwift/SocketLogger.swift"; sourceTree = "<group>"; };
+		A6E462EB1BA76431004FB8A9 /* SocketPacket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SocketPacket.swift; path = "../../mean/practice/ios-side/Socket.IO-Client-Swift/SocketIOClientSwift/SocketPacket.swift"; sourceTree = "<group>"; };
+		A6E462EC1BA76431004FB8A9 /* SocketParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SocketParser.swift; path = "../../mean/practice/ios-side/Socket.IO-Client-Swift/SocketIOClientSwift/SocketParser.swift"; sourceTree = "<group>"; };
+		A6E462ED1BA76431004FB8A9 /* SocketTypes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SocketTypes.swift; path = "../../mean/practice/ios-side/Socket.IO-Client-Swift/SocketIOClientSwift/SocketTypes.swift"; sourceTree = "<group>"; };
+		A6E462EE1BA76431004FB8A9 /* SwiftRegex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwiftRegex.swift; path = "../../mean/practice/ios-side/Socket.IO-Client-Swift/SocketIOClientSwift/SwiftRegex.swift"; sourceTree = "<group>"; };
+		A6E462EF1BA76431004FB8A9 /* WebSocket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WebSocket.swift; path = "../../mean/practice/ios-side/Socket.IO-Client-Swift/SocketIOClientSwift/WebSocket.swift"; sourceTree = "<group>"; };
+		A6E462FE1BA76855004FB8A9 /* ShowArtistOrAlbumDetailsDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowArtistOrAlbumDetailsDelegate.swift; sourceTree = "<group>"; };
+		A6E463021BA76CB0004FB8A9 /* ArtistOrAlbumDetailsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArtistOrAlbumDetailsTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +130,7 @@
 		A661DD991B9E36E600AC9F9D = {
 			isa = PBXGroup;
 			children = (
+				A6E463021BA76CB0004FB8A9 /* ArtistOrAlbumDetailsTableViewController.swift */,
 				A661DDD51B9E374500AC9F9D /* AVFoundation.framework */,
 				A661DDA41B9E36E600AC9F9D /* spotify-sdk-test */,
 				A661DDB91B9E36E700AC9F9D /* spotify-sdk-testTests */,
@@ -119,14 +152,16 @@
 		A661DDA41B9E36E600AC9F9D /* spotify-sdk-test */ = {
 			isa = PBXGroup;
 			children = (
+				A6E462E11BA763C6004FB8A9 /* Socketio */,
 				A661DDD31B9E373100AC9F9D /* Spotify.framework */,
 				A661DDA51B9E36E600AC9F9D /* AppDelegate.swift */,
-				A6E462D91BA613C0004FB8A9 /* PlaylistDelegate.swift */,
 				A661DDA71B9E36E600AC9F9D /* LoginViewController.swift */,
+				A6E462D91BA613C0004FB8A9 /* PlaylistDelegate.swift */,
 				A6A8997B1B9F6A1B009A4877 /* TabBarController.swift */,
 				A6A8997F1B9F7226009A4877 /* PlaylistViewController.swift */,
 				A6A899811B9F9D8C009A4877 /* PlaylistTrackCell.swift */,
 				A6E462DB1BA6222C004FB8A9 /* SearchViewController.swift */,
+				A6E462FE1BA76855004FB8A9 /* ShowArtistOrAlbumDetailsDelegate.swift */,
 				A6E462DD1BA63CB7004FB8A9 /* SearchResultTrackTableViewCell.swift */,
 				A6E462DF1BA64CCE004FB8A9 /* SearchResultsArtistOrAlbumTableViewCell.swift */,
 				A661DDA91B9E36E600AC9F9D /* Main.storyboard */,
@@ -154,6 +189,28 @@
 				A661DDC71B9E36E700AC9F9D /* Info.plist */,
 			);
 			path = "spotify-sdk-testUITests";
+			sourceTree = "<group>";
+		};
+		A6E462E11BA763C6004FB8A9 /* Socketio */ = {
+			isa = PBXGroup;
+			children = (
+				A6E462E21BA76431004FB8A9 /* SocketAckManager.swift */,
+				A6E462E31BA76431004FB8A9 /* SocketAnyEvent.swift */,
+				A6E462E41BA76431004FB8A9 /* SocketEngine.swift */,
+				A6E462E51BA76431004FB8A9 /* SocketEngineClient.swift */,
+				A6E462E61BA76431004FB8A9 /* SocketEventHandler.swift */,
+				A6E462E71BA76431004FB8A9 /* SocketFixUTF8.swift */,
+				A6E462E81BA76431004FB8A9 /* SocketIOClient.swift */,
+				A6E462E91BA76431004FB8A9 /* SocketIOClientStatus.swift */,
+				A6E462EA1BA76431004FB8A9 /* SocketLogger.swift */,
+				A6E462EB1BA76431004FB8A9 /* SocketPacket.swift */,
+				A6E462EC1BA76431004FB8A9 /* SocketParser.swift */,
+				A6E462ED1BA76431004FB8A9 /* SocketTypes.swift */,
+				A6E462EE1BA76431004FB8A9 /* SwiftRegex.swift */,
+				A6E462EF1BA76431004FB8A9 /* WebSocket.swift */,
+			);
+			name = Socketio;
+			path = ..;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -292,15 +349,31 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A6E462F31BA76431004FB8A9 /* SocketEngineClient.swift in Sources */,
+				A6E462F21BA76431004FB8A9 /* SocketEngine.swift in Sources */,
 				A6A899801B9F7226009A4877 /* PlaylistViewController.swift in Sources */,
 				A6E462DC1BA6222C004FB8A9 /* SearchViewController.swift in Sources */,
+				A6E462FB1BA76431004FB8A9 /* SocketTypes.swift in Sources */,
+				A6E462FC1BA76431004FB8A9 /* SwiftRegex.swift in Sources */,
+				A6E462F41BA76431004FB8A9 /* SocketEventHandler.swift in Sources */,
 				A6A899821B9F9D8C009A4877 /* PlaylistTrackCell.swift in Sources */,
+				A6E462F51BA76431004FB8A9 /* SocketFixUTF8.swift in Sources */,
+				A6E462F91BA76431004FB8A9 /* SocketPacket.swift in Sources */,
 				A661DDA81B9E36E600AC9F9D /* LoginViewController.swift in Sources */,
+				A6E462F11BA76431004FB8A9 /* SocketAnyEvent.swift in Sources */,
+				A6E462FF1BA76855004FB8A9 /* ShowArtistOrAlbumDetailsDelegate.swift in Sources */,
 				A6E462E01BA64CCE004FB8A9 /* SearchResultsArtistOrAlbumTableViewCell.swift in Sources */,
+				A6E462FD1BA76431004FB8A9 /* WebSocket.swift in Sources */,
+				A6E462FA1BA76431004FB8A9 /* SocketParser.swift in Sources */,
 				A6E462DE1BA63CB7004FB8A9 /* SearchResultTrackTableViewCell.swift in Sources */,
+				A6E462F01BA76431004FB8A9 /* SocketAckManager.swift in Sources */,
+				A6E462F71BA76431004FB8A9 /* SocketIOClientStatus.swift in Sources */,
 				A6A8997C1B9F6A1B009A4877 /* TabBarController.swift in Sources */,
+				A6E462F81BA76431004FB8A9 /* SocketLogger.swift in Sources */,
 				A661DDA61B9E36E600AC9F9D /* AppDelegate.swift in Sources */,
 				A6E462DA1BA613C0004FB8A9 /* PlaylistDelegate.swift in Sources */,
+				A6E463031BA76CB1004FB8A9 /* ArtistOrAlbumDetailsTableViewController.swift in Sources */,
+				A6E462F61BA76431004FB8A9 /* SocketIOClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
