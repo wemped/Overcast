@@ -11,15 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150915011113) do
+ActiveRecord::Schema.define(version: 20150915200742) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "likes", force: true do |t|
-    t.integer  "user_id"
     t.integer  "playlist_id"
     t.integer  "track_id"
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -40,6 +40,7 @@ ActiveRecord::Schema.define(version: 20150915011113) do
 
   create_table "playlists", force: true do |t|
     t.integer  "user_id"
+    t.string   "sock_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -47,12 +48,13 @@ ActiveRecord::Schema.define(version: 20150915011113) do
   add_index "playlists", ["user_id"], name: "index_playlists_on_user_id", using: :btree
 
   create_table "tracks", force: true do |t|
-    t.integer  "playlist_id"
     t.string   "title"
     t.string   "artist"
     t.string   "album"
     t.integer  "duration"
-    t.string   "playable_uri"
+    t.string   "playable_URI"
+    t.string   "spotify_id"
+    t.integer  "playlist_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
