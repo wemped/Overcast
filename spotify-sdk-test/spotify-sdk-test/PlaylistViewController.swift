@@ -9,7 +9,7 @@
 import UIKit
 import MediaPlayer
 
-class PlaylistViewController : UIViewController, SPTAudioStreamingPlaybackDelegate, UITableViewDataSource {
+class PlaylistViewController : UIViewController, SPTAudioStreamingPlaybackDelegate, UITableViewDataSource, BackButtonDelegate {
     
     @IBOutlet weak var playButton: UIButton!
     @IBOutlet weak var nowPlayingAlbumLabel: UILabel!
@@ -17,6 +17,9 @@ class PlaylistViewController : UIViewController, SPTAudioStreamingPlaybackDelega
     @IBOutlet weak var nowPlayingTrackLabel: UILabel!
     @IBOutlet weak var nowPlayingImageView: UIImageView!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var muteButton: UIButton!
+    @IBOutlet weak var unmuteButton: UIButton!
+    @IBOutlet weak var nextButton: UIButton!
     
     let ClientId = "eca84f057c5e43f7a990d771752d2885"
     var session : SPTSession!
@@ -24,6 +27,7 @@ class PlaylistViewController : UIViewController, SPTAudioStreamingPlaybackDelega
     var playlist = [SPTPartialTrack]()
     
     var forced_stop : Bool = false
+    var muted : Bool = false
     
     /*
         Set Spotify Session. If We aren't playing right now make play button visible.
@@ -31,6 +35,8 @@ class PlaylistViewController : UIViewController, SPTAudioStreamingPlaybackDelega
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.dataSource = self
+        self.playButton.hidden = true
+        self.nextButton.hidden = true
         let tabController = self.tabBarController as! TabBarController
         self.session = tabController.session
         if self.playlist.count > 0 {
@@ -40,7 +46,9 @@ class PlaylistViewController : UIViewController, SPTAudioStreamingPlaybackDelega
             self.player = SPTAudioStreamingController(clientId: ClientId)
             self.player!.playbackDelegate = self
         }
-        self.playButton.hidden = true
+        self.muteButton.hidden = true
+        self.unmuteButton.hidden = true
+        
     }
     
     //MARK: - UI Button Handlers
@@ -50,13 +58,31 @@ class PlaylistViewController : UIViewController, SPTAudioStreamingPlaybackDelega
         self.playlist.removeFirst()
         self.playNextSong()
         self.tableView.reloadData()
+        self.playButton.hidden = true
     }
     @IBAction func playButtonClicked(sender: UIButton) {
         print("clicked play")
         self.playNextSong()
         sender.hidden = true
+        self.muteButton.hidden = false
+        if self.playlist.count > 1 {
+            self.nextButton.hidden = false
+        }
     }
     
+    @IBAction func muteButtonClicked(sender: UIButton) {
+        self.muteVolume()
+        self.muted = true
+        self.muteButton.hidden = true
+        self.unmuteButton.hidden = false
+    }
+    
+    @IBAction func unmuteButtonClicked(sender: UIButton) {
+        self.unmuteVolume()
+        self.unmuteButton.hidden = true
+        self.muteButton.hidden = false
+        self.muted = false
+    }
     //MARK: - Table View functions
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.playlist.count-1
@@ -116,12 +142,13 @@ class PlaylistViewController : UIViewController, SPTAudioStreamingPlaybackDelega
         Start playing it
     */
     func playNextSong() {
-        self.playButton.hidden = true
+        self.playButton.hidden = false
         if self.playlist.count > 0 {
             let partialTrack = self.playlist[0]
             
             player!.loginWithSession(self.session) { (error: NSError!) -> Void in
-                SPTRequest.requestItemFromPartialObject(partialTrack, withSession: nil, callback: { (error:NSError!, results: AnyObject!) -> Void in
+                SPTRequest.requestItemFromPartialObject(partialTrack, withSession: nil, callback: {
+                    (error:NSError!, results: AnyObject!) -> Void in
                     let track = results as! SPTTrack
                     /*play track*/
                     print("playing track...")
@@ -250,5 +277,40 @@ class PlaylistViewController : UIViewController, SPTAudioStreamingPlaybackDelega
                 }
             })
         }
+    }
+//    func audioStreaming(audioStreaming: SPTAudioStreamingController!, var didChangeVolume volume: SPTVolume) {
+//        if (!self.muted){
+//            volume = 0
+//            print("muted volume")
+//        }
+    
+    func muteVolume(){
+        self.player?.setVolume(0, callback: { (error: NSError!) -> Void in
+            if error != nil {
+                print(error)
+                return
+            }
+            print("muted Volume")
+        })
+    }
+    
+    func unmuteVolume(){
+        self.player?.setVolume(1, callback: { (error: NSError!) -> Void in
+            if error != nil {
+                print(error)
+                return
+            }
+            print("Unmuted Volume")
+        })
+    }
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "CheckListeners" {
+            let navigationController = segue.destinationViewController as! UINavigationController
+            let controller = navigationController.topViewController as! ListenersViewController
+            controller.backButtonDelegate = self
+        }
+    }
+    func backButtonPressedFrom(controller: UIViewController) {
+        dismissViewControllerAnimated(true, completion: nil)
     }
 }

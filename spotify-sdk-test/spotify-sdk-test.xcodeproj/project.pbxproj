@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9ACFB09E1BA8E8EF005C94C9 /* ListenersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ACFB09D1BA8E8EF005C94C9 /* ListenersViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		9ACFB0A01BA8E94A005C94C9 /* BackButtonDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ACFB09F1BA8E94A005C94C9 /* BackButtonDelegate.swift */; settings = {ASSET_TAGS = (); }; };
 		A661DDA61B9E36E600AC9F9D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A661DDA51B9E36E600AC9F9D /* AppDelegate.swift */; };
 		A661DDA81B9E36E600AC9F9D /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A661DDA71B9E36E600AC9F9D /* LoginViewController.swift */; };
 		A661DDAB1B9E36E600AC9F9D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A661DDA91B9E36E600AC9F9D /* Main.storyboard */; };
@@ -43,6 +45,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9ACFB09D1BA8E8EF005C94C9 /* ListenersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListenersViewController.swift; sourceTree = "<group>"; };
+		9ACFB09F1BA8E94A005C94C9 /* BackButtonDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackButtonDelegate.swift; sourceTree = "<group>"; };
 		A661DDA21B9E36E600AC9F9D /* spotify-sdk-test.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "spotify-sdk-test.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A661DDA51B9E36E600AC9F9D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A661DDA71B9E36E600AC9F9D /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -129,6 +133,8 @@
 				A6E462DB1BA6222C004FB8A9 /* SearchViewController.swift */,
 				A6E462DD1BA63CB7004FB8A9 /* SearchResultTrackTableViewCell.swift */,
 				A6E462DF1BA64CCE004FB8A9 /* SearchResultsArtistOrAlbumTableViewCell.swift */,
+				9ACFB09D1BA8E8EF005C94C9 /* ListenersViewController.swift */,
+				9ACFB09F1BA8E94A005C94C9 /* BackButtonDelegate.swift */,
 				A661DDA91B9E36E600AC9F9D /* Main.storyboard */,
 				A661DDAC1B9E36E600AC9F9D /* Assets.xcassets */,
 				A661DDAE1B9E36E600AC9F9D /* LaunchScreen.storyboard */,
@@ -297,7 +303,9 @@
 				A6A899821B9F9D8C009A4877 /* PlaylistTrackCell.swift in Sources */,
 				A661DDA81B9E36E600AC9F9D /* LoginViewController.swift in Sources */,
 				A6E462E01BA64CCE004FB8A9 /* SearchResultsArtistOrAlbumTableViewCell.swift in Sources */,
+				9ACFB0A01BA8E94A005C94C9 /* BackButtonDelegate.swift in Sources */,
 				A6E462DE1BA63CB7004FB8A9 /* SearchResultTrackTableViewCell.swift in Sources */,
+				9ACFB09E1BA8E8EF005C94C9 /* ListenersViewController.swift in Sources */,
 				A6A8997C1B9F6A1B009A4877 /* TabBarController.swift in Sources */,
 				A661DDA61B9E36E600AC9F9D /* AppDelegate.swift in Sources */,
 				A6E462DA1BA613C0004FB8A9 /* PlaylistDelegate.swift in Sources */,
