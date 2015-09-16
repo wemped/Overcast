@@ -2,22 +2,19 @@ class UsersController < ApplicationController
 	skip_before_filter :verify_authenticity_token
 	
 	def create
-  		user = User.find_by(username: params[:username])
+    user = User.find_by(username: params[:username])
   			if user and user.authenticate(params[:password])
-  				user_info = User.where(id: user.id).select(:id, :username)
-				render json: user_info
+  				user_info = Playlist.joins(:user).select("username, playlists.id as playlist_id, user_id").where(user_id: user.id)
+				  render json: user_info
+
+        elsif user
+
   			else 
-				user = User.create(username: params[:username], password: params[:password], password_confirmation: params[:password_confirmation])
-				user_info = User.where(id: user.id).select(:id, :username)
-				render json: user_info
+  				user = User.create(username: params[:username], password: params[:password], password_confirmation: params[:password_confirmation])
+          Playlist.create(user_id: user.id)
+          user_info = Playlist.joins(:user).select("username, playlists.id as playlist_id, user_id").where(user_id: user.id)
+  				render json: user_info
   			end
 	end
 
-
-  	
-
-  	# def destroy
-  	# 	session[:user_id] = nil
-  	# 	redirect_to '/users'
-  	# end
 end

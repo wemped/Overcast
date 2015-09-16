@@ -1,6 +1,13 @@
 Rails.application.routes.draw do
 
-  
+  post 'tracks/create' => 'tracks#create'
+
+  patch 'playlists/broadcast' => 'playlists#broadcast'
+
+  patch 'playlists/end_broadcast' => 'playlists#end_broadcast'
+
+  get 'playlists/destroy'
+
   post 'users' => 'users#create'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
