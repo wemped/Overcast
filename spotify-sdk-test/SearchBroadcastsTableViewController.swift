@@ -54,7 +54,7 @@ class SearchBroadcastsTableViewController: UITableViewController {
     }
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("broadcastCell", forIndexPath: indexPath)
-        cell.textLabel!.text = self.broadcasts[indexPath.row]["username"]! + "'s Broadcast"
+        cell.textLabel!.text = self.broadcasts[indexPath.row]["broadcaster_username"]! + "'s Broadcast"
         return cell
     }
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
@@ -70,6 +70,11 @@ class SearchBroadcastsTableViewController: UITableViewController {
             var showDetailsViewController = navigationController.topViewController as! ShowBroadcastDetailsViewController
             self.tabController.getBroadcast(broadcast["playlist_id"]!, forView: showDetailsViewController)
             showDetailsViewController.session = self.session
+            showDetailsViewController.listener = self.tabController
+            print("in search playlist_id = " + broadcast["playlist_id"]!)
+            showDetailsViewController.playlist_id = broadcast["playlist_id"]
+            showDetailsViewController.broadcaster_id = broadcast["broadcaster_id"]
+            showDetailsViewController.broadcaster_username = broadcast["broadcaster_username"]
         }
     }
 }

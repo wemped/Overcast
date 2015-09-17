@@ -103,11 +103,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "spotify-sdk-test/AppDelegate.swift"
-            timestampString = "463362520.441982"
+            timestampString = "464207430.854639"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "41"
-            endingLineNumber = "41"
+            startingLineNumber = "46"
+            endingLineNumber = "46"
             landmarkName = "application(_:openURL:sourceApplication:annotation:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -625,11 +625,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "spotify-sdk-test/LoginViewController.swift"
-            timestampString = "464060349.571746"
+            timestampString = "464207729.058909"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "157"
-            endingLineNumber = "157"
+            startingLineNumber = "164"
+            endingLineNumber = "164"
             landmarkName = "LoginViewController"
             landmarkType = "3">
          </BreakpointContent>
@@ -657,13 +657,157 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "spotify-sdk-test/TabBarController.swift"
-            timestampString = "464158965.736791"
+            timestampString = "464208489.980972"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "72"
-            endingLineNumber = "72"
+            startingLineNumber = "92"
+            endingLineNumber = "92"
             landmarkName = "pushAddedTrackToServer(_:)"
             landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "spotify-sdk-test/TabBarController.swift"
+            timestampString = "464169888.556288"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "16"
+            endingLineNumber = "16"
+            landmarkName = "TabBarController"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "spotify_sdk_test.TabBarController.init (spotify_sdk_test.TabBarController.Type)(nibName : Swift.Optional&lt;Swift.String&gt;, bundle : Swift.Optional&lt;ObjectiveC.NSBundle&gt;) -&gt; spotify_sdk_test.TabBarController"
+                  moduleName = "spotify-sdk-test"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/drakewempe/Documents/CodingDojo/ios/togethear%20stuff/spotify-sdk-test/spotify-sdk-test/TabBarController.swift"
+                  timestampString = "464170235.012087"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "17"
+                  endingLineNumber = "17"
+                  offsetFromSymbolStart = "57">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "spotify_sdk_test.TabBarController.init (spotify_sdk_test.TabBarController.Type)(coder : ObjectiveC.NSCoder) -&gt; Swift.Optional&lt;spotify_sdk_test.TabBarController&gt;"
+                  moduleName = "spotify-sdk-test"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/drakewempe/Documents/CodingDojo/ios/togethear%20stuff/spotify-sdk-test/spotify-sdk-test/TabBarController.swift"
+                  timestampString = "464170235.012621"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "17"
+                  endingLineNumber = "17"
+                  offsetFromSymbolStart = "19">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "spotify-sdk-test/TabBarController.swift"
+            timestampString = "464216502.069512"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "215"
+            endingLineNumber = "215"
+            landmarkName = "requestPlaybackInfo(_:broadcaster_id:)"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "spotify_sdk_test.TabBarController.joinStation (spotify_sdk_test.TabBarController)(Swift.String) -&gt; ()"
+                  moduleName = "spotify-sdk-test"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/drakewempe/Documents/CodingDojo/ios/togethear%20stuff/spotify-sdk-test/spotify-sdk-test/TabBarController.swift"
+                  timestampString = "464197675.321466"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "196"
+                  endingLineNumber = "196"
+                  offsetFromSymbolStart = "27">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "spotify_sdk_test.TabBarController.(joinStation (spotify_sdk_test.TabBarController) -&gt; (Swift.String) -&gt; ()).(closure #1)"
+                  moduleName = "spotify-sdk-test"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/drakewempe/Documents/CodingDojo/ios/togethear%20stuff/spotify-sdk-test/spotify-sdk-test/TabBarController.swift"
+                  timestampString = "464197675.322658"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "198"
+                  endingLineNumber = "198"
+                  offsetFromSymbolStart = "27">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "spotify-sdk-test/AppDelegate.swift"
+            timestampString = "464206405.873427"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "15"
+            endingLineNumber = "15"
+            landmarkName = "AppDelegate"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "spotify_sdk_test.AppDelegate.TokenSwapURL.getter : Swift.String"
+                  moduleName = "spotify-sdk-test"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/drakewempe/Documents/CodingDojo/ios/togethear%20stuff/spotify-sdk-test/spotify-sdk-test/AppDelegate.swift"
+                  timestampString = "464206405.937429"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "12">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "spotify_sdk_test.AppDelegate.init (spotify_sdk_test.AppDelegate.Type)() -&gt; spotify_sdk_test.AppDelegate"
+                  moduleName = "spotify-sdk-test"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/drakewempe/Documents/CodingDojo/ios/togethear%20stuff/spotify-sdk-test/spotify-sdk-test/AppDelegate.swift"
+                  timestampString = "464206405.938522"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "15"
+                  endingLineNumber = "15"
+                  offsetFromSymbolStart = "145">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

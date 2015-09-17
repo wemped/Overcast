@@ -11,12 +11,18 @@ import UIKit
 class ShowBroadcastDetailsViewController: UIViewController, UITableViewDataSource{
 
     @IBOutlet weak var tableView: UITableView!
+    let globals = Globals()
     var playlist : [[String:String]]?
-    var player = SPTAudioStreamingController(clientId: "eca84f057c5e43f7a990d771752d2885")
+    var player : SPTAudioStreamingController!
     var session : SPTSession!
+    var listener : ListenerSocketDelegate!
+    var broadcaster_id : String!
+    var playlist_id : String!
+    var broadcaster_username : String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.player = SPTAudioStreamingController(clientId: globals.SpotifyClientID)
         self.tableView.dataSource = self
 
         // Do any additional setup after loading the view.
@@ -43,24 +49,27 @@ class ShowBroadcastDetailsViewController: UIViewController, UITableViewDataSourc
     }
     // MARK: - UI Button handlers
     @IBAction func playButtonPressed(sender: UIButton) {
-        print(self.playlist![0]["spotify_uri"])
-//        player.playURI(NSURL(string: playlist![0]["playable_uri"]!)) {
-//            (error:NSError!) -> Void in
-//            print("???")
+        print("^_^_^_^_^_^_")
+        self.listener.joinStation(self.playlist_id, broadcaster_id: broadcaster_id)
+        self.listener.requestPlaybackInfo(self.playlist_id, broadcaster_id: broadcaster_id)
+//        print(self.playlist![0]["spotify_uri"])
+////        player.playURI(NSURL(string: playlist![0]["playable_uri"]!)) {
+////            (error:NSError!) -> Void in
+////            print("???")
+////        }
+//        //do login thing
+//        player!.loginWithSession(self.session) {
+//            (error: NSError!) -> Void in
+//            SPTRequest.requestItemAtURI(NSURL(string: self.playlist![0]["spotify_uri"]!), withSession: nil) {
+//                (error: NSError?, object:AnyObject!) -> Void in
+//                let track = object as! SPTTrack
+//                print(track)
+//                self.player!.playURI(track.playableUri, callback: {
+//                    (error:NSError!) -> Void in
+//                    print("yo")
+//                })
+//            }
 //        }
-        //do login thing
-        player!.loginWithSession(self.session) {
-            (error: NSError!) -> Void in
-            SPTRequest.requestItemAtURI(NSURL(string: self.playlist![0]["spotify_uri"]!), withSession: nil) {
-                (error: NSError?, object:AnyObject!) -> Void in
-                let track = object as! SPTTrack
-                print(track)
-                self.player!.playURI(track.playableUri, callback: {
-                    (error:NSError!) -> Void in
-                    print("yo")
-                })
-            }
-        }
     }
     
     

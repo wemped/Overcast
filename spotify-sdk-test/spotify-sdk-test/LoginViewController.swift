@@ -9,13 +9,14 @@
 import UIKit
 
 class LoginViewController: UIViewController, SPTAudioStreamingPlaybackDelegate {
-    let ClientID = "eca84f057c5e43f7a990d771752d2885"
-    let CallBackURL = "spotifysdktest://returnafterlogin"
+    let globals = Globals()
+    var ClientID : String!
+    var CallBackURL : String!
     /*You will need to change these for testing on localhost or your own phone!*/
     /*Also needs to change in AppDelegate*/
-    let TokenSwapURL =           "http://localhost:1234/swap"
-    let TokenRefreshServiceURL = "http://localhost:1234/refresh"
-    let RailsServerUrl =         "http://192.168.1.102:3000"
+    var TokenSwapURL : String!
+    var TokenRefreshServiceURL :String!
+    var RailsServerUrl : String!
     var session: SPTSession!
     var sentPassword : String?
     var UserID : Int?
@@ -34,6 +35,11 @@ class LoginViewController: UIViewController, SPTAudioStreamingPlaybackDelegate {
         If we do call checkSpotifyAccount
     */
     override func viewDidLoad() {
+        self.ClientID = globals.SpotifyClientID
+        self.CallBackURL = globals.SpotifyCallbackUrl
+        self.TokenRefreshServiceURL = globals.AuthenticateServer + "/refresh"
+        self.TokenSwapURL = globals.AuthenticateServer + "/swap"
+        self.RailsServerUrl = globals.RailsServer
         print("loaded")
         super.viewDidLoad()
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateAfterFirstLogin", name: "loginSuccesful", object: nil)
@@ -93,6 +99,7 @@ class LoginViewController: UIViewController, SPTAudioStreamingPlaybackDelegate {
         Creates a user on postgres if valid username and password
     */
     @IBAction func registerButtonPressed(sender: UIButton) {
+        view.endEditing(true)
         let username = self.usernameTextField.text
         let password = self.passwordTextField.text
         let confPassword = self.confirmPasswordTextField.text
@@ -184,10 +191,11 @@ class LoginViewController: UIViewController, SPTAudioStreamingPlaybackDelegate {
                 self.segueToMainScreen()
             }
         }else{
-            print("??")
-            spotifyLoginButton.hidden = false
+            print("??juhkhk")
+            dispatch_async(dispatch_get_main_queue()){
+                self.spotifyLoginButton.hidden = false
+            }
         }
-
     }
     
     //MARK: - Navigation

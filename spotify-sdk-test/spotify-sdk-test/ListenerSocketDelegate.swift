@@ -11,8 +11,8 @@ import Foundation
 protocol ListenerSocketDelegate : class {
     func gotNextSongForced()
     func gotNextSong()
-    func requestCurrentTime()
-    func joinStation()
+    func requestPlaybackInfo(playlist_id : String, broadcaster_id : String)
+    func joinStation(playlist_id : String, broadcaster_id : String)
     func likeTrack()
     func recievedCurrentTimeReply()
 }

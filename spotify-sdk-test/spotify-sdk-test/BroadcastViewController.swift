@@ -18,14 +18,13 @@ class BroadcastViewController : UIViewController, SPTAudioStreamingPlaybackDeleg
     @IBOutlet weak var nowPlayingImageView: UIImageView!
     @IBOutlet weak var tableView: UITableView!
     
-    let ClientId = "eca84f057c5e43f7a990d771752d2885"
+    var globals = Globals()
+    var ClientId : String!
     var session : SPTSession!
     var player : SPTAudioStreamingController?
     var playlist = [SPTPartialTrack]()
     var tabController : TabBarController!
-    var RailsServerUrl = "http://192.168.1.102:3000"
-
-    
+    var RailsServerUrl : String!
     var forced_stop : Bool = false
     
     /*
@@ -33,6 +32,8 @@ class BroadcastViewController : UIViewController, SPTAudioStreamingPlaybackDeleg
     */
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.ClientId = globals.SpotifyClientID
+        self.RailsServerUrl = globals.RailsServer
         self.tableView.dataSource = self
         let tabController = self.tabBarController as! TabBarController
         self.session = tabController.session

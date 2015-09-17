@@ -10,16 +10,21 @@ import UIKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-    let ClientID = "eca84f057c5e43f7a990d771752d2885"
-    let CallBackURL = "spotifysdktest://returnafterlogin"
-    let TokenSwapURL = "http://localhost:1234/swap" //THIS WILL CHANGE WHEN RUNNING ON MY PHONE
-    let TokenRefreshServiceURL = "http://localhost:1234/refresh"
+    
+    var globals = Globals()
+    var ClientID : String!
+    var CallBackURL : String!
+    var TokenSwapURL : String!
+    var TokenRefreshServiceURL : String!
 
     var window: UIWindow?
 
-
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+        self.ClientID = globals.SpotifyClientID
+        self.TokenSwapURL = globals.AuthenticateServer + "/swap"
+        self.TokenRefreshServiceURL = globals.AuthenticateServer + "/refresh"
+        self.CallBackURL = globals.SpotifyCallbackUrl
         return true
     }
     
