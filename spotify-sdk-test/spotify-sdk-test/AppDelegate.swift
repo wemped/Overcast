@@ -12,8 +12,8 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
     let ClientID = "eca84f057c5e43f7a990d771752d2885"
     let CallBackURL = "spotifysdktest://returnafterlogin"
-    let TokenSwapURL = "http://192.168.1.160:1234/swap" //THIS WILL CHANGE WHEN RUNNING ON MY PHONE
-    let TokenRefreshServiceURL = "http://192.168.1.160:1234/refresh"
+    let TokenSwapURL = "http://localhost:1234/swap" //THIS WILL CHANGE WHEN RUNNING ON MY PHONE
+    let TokenRefreshServiceURL = "http://localhost:1234/refresh"
 
     var window: UIWindow?
 

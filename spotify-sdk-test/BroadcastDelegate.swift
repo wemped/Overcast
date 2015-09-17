@@ -8,6 +8,6 @@
 
 import UIKit
 
-protocol PlaylistDelegate : class {
+protocol BroadcastDelegate : class {
     func addToPlaylist(track partialTrack : SPTPartialTrack)
 }

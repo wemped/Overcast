@@ -65,7 +65,7 @@ post '/refresh' do
     http.use_ssl = true
 
     request = Net::HTTP::Post.new("/api/token")
-
+    puts request
     request.add_field("Authorization", AUTH_HEADER)
 
     encrypted_token = params[:refresh_token]

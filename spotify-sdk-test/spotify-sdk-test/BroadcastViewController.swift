@@ -9,7 +9,7 @@
 import UIKit
 import MediaPlayer
 
-class PlaylistViewController : UIViewController, SPTAudioStreamingPlaybackDelegate, UITableViewDataSource {
+class BroadcastViewController : UIViewController, SPTAudioStreamingPlaybackDelegate, UITableViewDataSource {
     
     @IBOutlet weak var playButton: UIButton!
     @IBOutlet weak var nowPlayingAlbumLabel: UILabel!
@@ -22,6 +22,9 @@ class PlaylistViewController : UIViewController, SPTAudioStreamingPlaybackDelega
     var session : SPTSession!
     var player : SPTAudioStreamingController?
     var playlist = [SPTPartialTrack]()
+    var tabController : TabBarController!
+    var RailsServerUrl = "http://192.168.1.102:3000"
+
     
     var forced_stop : Bool = false
     
@@ -47,12 +50,17 @@ class PlaylistViewController : UIViewController, SPTAudioStreamingPlaybackDelega
     @IBAction func nextButtonClicked(sender: UIButton) {
         self.forced_stop = true
         self.player?.stop(nil)
-        self.playlist.removeFirst()
-        self.playNextSong()
-        self.tableView.reloadData()
+        if self.playlist.first != nil{
+            self.playlist.removeFirst()
+            self.playNextSong()
+            self.tableView.reloadData()
+        }else{
+            //Set all info to empty
+        }
     }
     @IBAction func playButtonClicked(sender: UIButton) {
         print("clicked play")
+        self.tabController.beginBroadcast()
         self.playNextSong()
         sender.hidden = true
     }

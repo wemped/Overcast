@@ -150,7 +150,7 @@ class SearchViewController: UIViewController,UITableViewDataSource, UITableViewD
             if let album = sender as? SPTPartialAlbum{
                 detailsViewController.partialAlbum = album
             }
-            detailsViewController.playlistDelegate = tabController!
+            detailsViewController.broadcastDelegate = tabController!
             detailsViewController.dismissDelegate = self
         }
     }
