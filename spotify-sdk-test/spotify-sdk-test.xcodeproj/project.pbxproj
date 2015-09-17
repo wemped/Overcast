@@ -10,6 +10,8 @@
 		A6173F8B1BAA379F0055E2AA /* SearchBroadcastsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6173F8A1BAA379F0055E2AA /* SearchBroadcastsTableViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		A6173F8D1BAA4EC60055E2AA /* ShowBroadcastDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6173F8C1BAA4EC60055E2AA /* ShowBroadcastDetailsViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		A6173F8F1BAA9A240055E2AA /* Globals.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6173F8E1BAA9A240055E2AA /* Globals.swift */; settings = {ASSET_TAGS = (); }; };
+		A6173F911BAB770C0055E2AA /* BackButtonDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6173F901BAB770C0055E2AA /* BackButtonDelegate.swift */; settings = {ASSET_TAGS = (); }; };
+		A6173F931BAB77850055E2AA /* ShowListenersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6173F921BAB77850055E2AA /* ShowListenersTableViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		A661DDA61B9E36E600AC9F9D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A661DDA51B9E36E600AC9F9D /* AppDelegate.swift */; };
 		A661DDA81B9E36E600AC9F9D /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A661DDA71B9E36E600AC9F9D /* LoginViewController.swift */; };
 		A661DDAB1B9E36E600AC9F9D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A661DDA91B9E36E600AC9F9D /* Main.storyboard */; };
@@ -69,6 +71,8 @@
 		A6173F8A1BAA379F0055E2AA /* SearchBroadcastsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchBroadcastsTableViewController.swift; sourceTree = "<group>"; };
 		A6173F8C1BAA4EC60055E2AA /* ShowBroadcastDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowBroadcastDetailsViewController.swift; sourceTree = "<group>"; };
 		A6173F8E1BAA9A240055E2AA /* Globals.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Globals.swift; sourceTree = "<group>"; };
+		A6173F901BAB770C0055E2AA /* BackButtonDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackButtonDelegate.swift; sourceTree = "<group>"; };
+		A6173F921BAB77850055E2AA /* ShowListenersTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowListenersTableViewController.swift; sourceTree = "<group>"; };
 		A661DDA21B9E36E600AC9F9D /* spotify-sdk-test.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "spotify-sdk-test.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A661DDA51B9E36E600AC9F9D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A661DDA71B9E36E600AC9F9D /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -185,6 +189,8 @@
 				A6E462DD1BA63CB7004FB8A9 /* SearchResultTrackTableViewCell.swift */,
 				A6E462DF1BA64CCE004FB8A9 /* SearchResultsArtistOrAlbumTableViewCell.swift */,
 				A661DDA91B9E36E600AC9F9D /* Main.storyboard */,
+				A6173F901BAB770C0055E2AA /* BackButtonDelegate.swift */,
+				A6173F921BAB77850055E2AA /* ShowListenersTableViewController.swift */,
 				A6173F8C1BAA4EC60055E2AA /* ShowBroadcastDetailsViewController.swift */,
 				A661DDAC1B9E36E600AC9F9D /* Assets.xcassets */,
 				A661DDAE1B9E36E600AC9F9D /* LaunchScreen.storyboard */,
@@ -375,8 +381,10 @@
 				A6A899801B9F7226009A4877 /* BroadcastViewController.swift in Sources */,
 				A6E462DC1BA6222C004FB8A9 /* SearchViewController.swift in Sources */,
 				A6E462FB1BA76431004FB8A9 /* SocketTypes.swift in Sources */,
+				A6173F911BAB770C0055E2AA /* BackButtonDelegate.swift in Sources */,
 				A6D6ADC21BA87E6F00E07E2E /* ListenerSocketDelegate.swift in Sources */,
 				A6E462FC1BA76431004FB8A9 /* SwiftRegex.swift in Sources */,
+				A6173F931BAB77850055E2AA /* ShowListenersTableViewController.swift in Sources */,
 				A6E462F41BA76431004FB8A9 /* SocketEventHandler.swift in Sources */,
 				A6A899821B9F9D8C009A4877 /* PlaylistTrackCell.swift in Sources */,
 				A6E462F51BA76431004FB8A9 /* SocketFixUTF8.swift in Sources */,

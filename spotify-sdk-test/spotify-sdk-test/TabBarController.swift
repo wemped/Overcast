@@ -64,6 +64,9 @@ class TabBarController : UITabBarController, BroadcastDelegate, BroadcasterSocke
     func addToPlaylist(track partialTrack : SPTPartialTrack){
         self.pushAddedTrackToServer(partialTrack)
     }
+    func changeTabToSearch(){
+        self.selectedViewController = self.viewControllers![Int(0)]
+    }
     
     // MARK: - Overcast Server HTTP Request functions
     func pushAddedTrackToServer(track: SPTPartialTrack) {

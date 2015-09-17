@@ -9,7 +9,7 @@
 import UIKit
 import MediaPlayer
 
-class BroadcastViewController : UIViewController, SPTAudioStreamingPlaybackDelegate, UITableViewDataSource {
+class BroadcastViewController : UIViewController, SPTAudioStreamingPlaybackDelegate, UITableViewDataSource, BackButtonDelegate {
     
     @IBOutlet weak var playButton: UIButton!
     @IBOutlet weak var nowPlayingAlbumLabel: UILabel!
@@ -26,6 +26,9 @@ class BroadcastViewController : UIViewController, SPTAudioStreamingPlaybackDeleg
     var tabController : TabBarController!
     var RailsServerUrl : String!
     var forced_stop : Bool = false
+    @IBOutlet weak var muteButoon: UIButton!
+    var muted = false
+    var playlistPosition = 0
     
     /*
         Set Spotify Session. If We aren't playing right now make play button visible.
@@ -52,7 +55,8 @@ class BroadcastViewController : UIViewController, SPTAudioStreamingPlaybackDeleg
         self.forced_stop = true
         self.player?.stop(nil)
         if self.playlist.first != nil{
-            self.playlist.removeFirst()
+            self.playlistPosition++
+//            self.playlist.removeFirst()
             self.playNextSong()
             self.tableView.reloadData()
         }else{
@@ -65,7 +69,19 @@ class BroadcastViewController : UIViewController, SPTAudioStreamingPlaybackDeleg
         self.playNextSong()
         sender.hidden = true
     }
+    @IBAction func muteButtonPressed(sender: UIButton) {
+        if self.muted == false{
+            self.toggleMute()
+            self.muteButoon.setTitle("Unmute", forState: UIControlState.Normal)
+        }else{
+            self.toggleMute()
+            self.muteButoon.setTitle("Mute", forState: UIControlState.Normal)
+        }
+    }
     
+    @IBAction func changeTabToSearchController(sender: UIButton) {
+        self.tabController.changeTabToSearch()
+    }
     //MARK: - Table View functions
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.playlist.count-1
@@ -73,8 +89,13 @@ class BroadcastViewController : UIViewController, SPTAudioStreamingPlaybackDeleg
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let dequeued : AnyObject = tableView.dequeueReusableCellWithIdentifier("playlistTrackCell",forIndexPath: indexPath)
         let cell = dequeued as! PlaylistTrackCell
-        cell.trackArtistLabel.text = self.playlist[indexPath.row+1].artists[0].name
-        cell.trackTitleLabel.text = self.playlist[indexPath.row+1].name!
+        cell.trackArtistLabel.text = self.playlist[indexPath.row].artists[0].name
+        cell.trackTitleLabel.text = self.playlist[indexPath.row].name!
+        if indexPath.row < self.playlistPosition {
+            cell.backgroundColor = .grayColor()
+        }else{
+            cell.backgroundColor = .whiteColor()
+        }
         return cell
     }
     func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
@@ -126,9 +147,8 @@ class BroadcastViewController : UIViewController, SPTAudioStreamingPlaybackDeleg
     */
     func playNextSong() {
         self.playButton.hidden = true
-        if self.playlist.count > 0 {
-            let partialTrack = self.playlist[0]
-            
+        if self.playlist.count - self.playlistPosition > 1 {
+            let partialTrack = self.playlist[self.playlistPosition]
             player!.loginWithSession(self.session) { (error: NSError!) -> Void in
                 SPTRequest.requestItemFromPartialObject(partialTrack, withSession: nil, callback: { (error:NSError!, results: AnyObject!) -> Void in
                     let track = results as! SPTTrack
@@ -258,6 +278,37 @@ class BroadcastViewController : UIViewController, SPTAudioStreamingPlaybackDeleg
                     })
                 }
             })
+        }
+    }
+    func toggleMute(){
+        if self.muted == true{
+            self.player?.setVolume(1, callback: {
+                (error: NSError!) -> Void in
+                if error != nil{
+                    print(error)
+                }
+            })
+        }else{
+            self.player?.setVolume(0, callback: {
+                (error: NSError!) -> Void in
+                if error != nil{
+                    print(error)
+                }
+            })
+        }
+        self.muted = !self.muted
+    }
+    // MARK - Back Button Delegate functions
+    func backButtonPressedFrom(controller: UIViewController) {
+        dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    // MARK - Navigation
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "showListenersTableView" {
+            let navigationController = segue.destinationViewController as! UINavigationController
+            let controller = navigationController.topViewController! as! ShowListenersTableViewController
+            controller.backButtonDelegate = self
         }
     }
 }
