@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A6173F8B1BAA379F0055E2AA /* SearchBroadcastsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6173F8A1BAA379F0055E2AA /* SearchBroadcastsTableViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		A6173F8D1BAA4EC60055E2AA /* ShowBroadcastDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6173F8C1BAA4EC60055E2AA /* ShowBroadcastDetailsViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		A6173F8F1BAA9A240055E2AA /* Globals.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6173F8E1BAA9A240055E2AA /* Globals.swift */; settings = {ASSET_TAGS = (); }; };
+		A6173F911BAB770C0055E2AA /* BackButtonDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6173F901BAB770C0055E2AA /* BackButtonDelegate.swift */; settings = {ASSET_TAGS = (); }; };
+		A6173F931BAB77850055E2AA /* ShowListenersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6173F921BAB77850055E2AA /* ShowListenersTableViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		A661DDA61B9E36E600AC9F9D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A661DDA51B9E36E600AC9F9D /* AppDelegate.swift */; };
 		A661DDA81B9E36E600AC9F9D /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A661DDA71B9E36E600AC9F9D /* LoginViewController.swift */; };
 		A661DDAB1B9E36E600AC9F9D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A661DDA91B9E36E600AC9F9D /* Main.storyboard */; };
@@ -17,9 +22,13 @@
 		A661DDD41B9E373100AC9F9D /* Spotify.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A661DDD31B9E373100AC9F9D /* Spotify.framework */; settings = {ASSET_TAGS = (); }; };
 		A661DDD61B9E374500AC9F9D /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A661DDD51B9E374500AC9F9D /* AVFoundation.framework */; };
 		A6A8997C1B9F6A1B009A4877 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6A8997B1B9F6A1B009A4877 /* TabBarController.swift */; settings = {ASSET_TAGS = (); }; };
-		A6A899801B9F7226009A4877 /* PlaylistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6A8997F1B9F7226009A4877 /* PlaylistViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		A6A899801B9F7226009A4877 /* BroadcastViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6A8997F1B9F7226009A4877 /* BroadcastViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		A6A899821B9F9D8C009A4877 /* PlaylistTrackCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6A899811B9F9D8C009A4877 /* PlaylistTrackCell.swift */; settings = {ASSET_TAGS = (); }; };
-		A6E462DA1BA613C0004FB8A9 /* PlaylistDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6E462D91BA613C0004FB8A9 /* PlaylistDelegate.swift */; settings = {ASSET_TAGS = (); }; };
+		A6D665B61BA8B6080035538D /* OvercastServerHTTPDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D665B51BA8B6080035538D /* OvercastServerHTTPDelegate.swift */; settings = {ASSET_TAGS = (); }; };
+		A6D665B81BA8BF240035538D /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D665B71BA8BF240035538D /* SwiftyJSON.swift */; settings = {ASSET_TAGS = (); }; };
+		A6D6ADC01BA87D0200E07E2E /* BroadcasterSocketDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D6ADBF1BA87D0200E07E2E /* BroadcasterSocketDelegate.swift */; settings = {ASSET_TAGS = (); }; };
+		A6D6ADC21BA87E6F00E07E2E /* ListenerSocketDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D6ADC11BA87E6F00E07E2E /* ListenerSocketDelegate.swift */; settings = {ASSET_TAGS = (); }; };
+		A6E462DA1BA613C0004FB8A9 /* BroadcastDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6E462D91BA613C0004FB8A9 /* BroadcastDelegate.swift */; settings = {ASSET_TAGS = (); }; };
 		A6E462DC1BA6222C004FB8A9 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6E462DB1BA6222C004FB8A9 /* SearchViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		A6E462DE1BA63CB7004FB8A9 /* SearchResultTrackTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6E462DD1BA63CB7004FB8A9 /* SearchResultTrackTableViewCell.swift */; settings = {ASSET_TAGS = (); }; };
 		A6E462E01BA64CCE004FB8A9 /* SearchResultsArtistOrAlbumTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6E462DF1BA64CCE004FB8A9 /* SearchResultsArtistOrAlbumTableViewCell.swift */; settings = {ASSET_TAGS = (); }; };
@@ -59,6 +68,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A6173F8A1BAA379F0055E2AA /* SearchBroadcastsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchBroadcastsTableViewController.swift; sourceTree = "<group>"; };
+		A6173F8C1BAA4EC60055E2AA /* ShowBroadcastDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowBroadcastDetailsViewController.swift; sourceTree = "<group>"; };
+		A6173F8E1BAA9A240055E2AA /* Globals.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Globals.swift; sourceTree = "<group>"; };
+		A6173F901BAB770C0055E2AA /* BackButtonDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackButtonDelegate.swift; sourceTree = "<group>"; };
+		A6173F921BAB77850055E2AA /* ShowListenersTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowListenersTableViewController.swift; sourceTree = "<group>"; };
 		A661DDA21B9E36E600AC9F9D /* spotify-sdk-test.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "spotify-sdk-test.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A661DDA51B9E36E600AC9F9D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A661DDA71B9E36E600AC9F9D /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -76,9 +90,13 @@
 		A661DDD51B9E374500AC9F9D /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		A661DDD71B9E37BB00AC9F9D /* spotify-sdk-test-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "spotify-sdk-test-Bridging-Header.h"; sourceTree = "<group>"; };
 		A6A8997B1B9F6A1B009A4877 /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
-		A6A8997F1B9F7226009A4877 /* PlaylistViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaylistViewController.swift; sourceTree = "<group>"; };
+		A6A8997F1B9F7226009A4877 /* BroadcastViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BroadcastViewController.swift; sourceTree = "<group>"; };
 		A6A899811B9F9D8C009A4877 /* PlaylistTrackCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlaylistTrackCell.swift; path = ../PlaylistTrackCell.swift; sourceTree = "<group>"; };
-		A6E462D91BA613C0004FB8A9 /* PlaylistDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlaylistDelegate.swift; path = ../PlaylistDelegate.swift; sourceTree = "<group>"; };
+		A6D665B51BA8B6080035538D /* OvercastServerHTTPDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OvercastServerHTTPDelegate.swift; sourceTree = "<group>"; };
+		A6D665B71BA8BF240035538D /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwiftyJSON.swift; path = ../../../../SwiftyJSON/Source/SwiftyJSON.swift; sourceTree = "<group>"; };
+		A6D6ADBF1BA87D0200E07E2E /* BroadcasterSocketDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BroadcasterSocketDelegate.swift; sourceTree = "<group>"; };
+		A6D6ADC11BA87E6F00E07E2E /* ListenerSocketDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListenerSocketDelegate.swift; sourceTree = "<group>"; };
+		A6E462D91BA613C0004FB8A9 /* BroadcastDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BroadcastDelegate.swift; path = ../BroadcastDelegate.swift; sourceTree = "<group>"; };
 		A6E462DB1BA6222C004FB8A9 /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		A6E462DD1BA63CB7004FB8A9 /* SearchResultTrackTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SearchResultTrackTableViewCell.swift; path = ../SearchResultTrackTableViewCell.swift; sourceTree = "<group>"; };
 		A6E462DF1BA64CCE004FB8A9 /* SearchResultsArtistOrAlbumTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SearchResultsArtistOrAlbumTableViewCell.swift; path = ../SearchResultsArtistOrAlbumTableViewCell.swift; sourceTree = "<group>"; };
@@ -130,6 +148,7 @@
 		A661DD991B9E36E600AC9F9D = {
 			isa = PBXGroup;
 			children = (
+				A6173F8A1BAA379F0055E2AA /* SearchBroadcastsTableViewController.swift */,
 				A6E463021BA76CB0004FB8A9 /* ArtistOrAlbumDetailsTableViewController.swift */,
 				A661DDD51B9E374500AC9F9D /* AVFoundation.framework */,
 				A661DDA41B9E36E600AC9F9D /* spotify-sdk-test */,
@@ -152,19 +171,27 @@
 		A661DDA41B9E36E600AC9F9D /* spotify-sdk-test */ = {
 			isa = PBXGroup;
 			children = (
+				A6D665B71BA8BF240035538D /* SwiftyJSON.swift */,
 				A6E462E11BA763C6004FB8A9 /* Socketio */,
 				A661DDD31B9E373100AC9F9D /* Spotify.framework */,
 				A661DDA51B9E36E600AC9F9D /* AppDelegate.swift */,
 				A661DDA71B9E36E600AC9F9D /* LoginViewController.swift */,
-				A6E462D91BA613C0004FB8A9 /* PlaylistDelegate.swift */,
+				A6E462D91BA613C0004FB8A9 /* BroadcastDelegate.swift */,
+				A6D6ADBF1BA87D0200E07E2E /* BroadcasterSocketDelegate.swift */,
+				A6D6ADC11BA87E6F00E07E2E /* ListenerSocketDelegate.swift */,
 				A6A8997B1B9F6A1B009A4877 /* TabBarController.swift */,
-				A6A8997F1B9F7226009A4877 /* PlaylistViewController.swift */,
+				A6173F8E1BAA9A240055E2AA /* Globals.swift */,
+				A6D665B51BA8B6080035538D /* OvercastServerHTTPDelegate.swift */,
+				A6A8997F1B9F7226009A4877 /* BroadcastViewController.swift */,
 				A6A899811B9F9D8C009A4877 /* PlaylistTrackCell.swift */,
 				A6E462DB1BA6222C004FB8A9 /* SearchViewController.swift */,
 				A6E462FE1BA76855004FB8A9 /* ShowArtistOrAlbumDetailsDelegate.swift */,
 				A6E462DD1BA63CB7004FB8A9 /* SearchResultTrackTableViewCell.swift */,
 				A6E462DF1BA64CCE004FB8A9 /* SearchResultsArtistOrAlbumTableViewCell.swift */,
 				A661DDA91B9E36E600AC9F9D /* Main.storyboard */,
+				A6173F901BAB770C0055E2AA /* BackButtonDelegate.swift */,
+				A6173F921BAB77850055E2AA /* ShowListenersTableViewController.swift */,
+				A6173F8C1BAA4EC60055E2AA /* ShowBroadcastDetailsViewController.swift */,
 				A661DDAC1B9E36E600AC9F9D /* Assets.xcassets */,
 				A661DDAE1B9E36E600AC9F9D /* LaunchScreen.storyboard */,
 				A661DDB11B9E36E600AC9F9D /* Info.plist */,
@@ -351,27 +378,36 @@
 			files = (
 				A6E462F31BA76431004FB8A9 /* SocketEngineClient.swift in Sources */,
 				A6E462F21BA76431004FB8A9 /* SocketEngine.swift in Sources */,
-				A6A899801B9F7226009A4877 /* PlaylistViewController.swift in Sources */,
+				A6A899801B9F7226009A4877 /* BroadcastViewController.swift in Sources */,
 				A6E462DC1BA6222C004FB8A9 /* SearchViewController.swift in Sources */,
 				A6E462FB1BA76431004FB8A9 /* SocketTypes.swift in Sources */,
+				A6173F911BAB770C0055E2AA /* BackButtonDelegate.swift in Sources */,
+				A6D6ADC21BA87E6F00E07E2E /* ListenerSocketDelegate.swift in Sources */,
 				A6E462FC1BA76431004FB8A9 /* SwiftRegex.swift in Sources */,
+				A6173F931BAB77850055E2AA /* ShowListenersTableViewController.swift in Sources */,
 				A6E462F41BA76431004FB8A9 /* SocketEventHandler.swift in Sources */,
 				A6A899821B9F9D8C009A4877 /* PlaylistTrackCell.swift in Sources */,
 				A6E462F51BA76431004FB8A9 /* SocketFixUTF8.swift in Sources */,
 				A6E462F91BA76431004FB8A9 /* SocketPacket.swift in Sources */,
 				A661DDA81B9E36E600AC9F9D /* LoginViewController.swift in Sources */,
+				A6173F8F1BAA9A240055E2AA /* Globals.swift in Sources */,
+				A6D6ADC01BA87D0200E07E2E /* BroadcasterSocketDelegate.swift in Sources */,
+				A6173F8B1BAA379F0055E2AA /* SearchBroadcastsTableViewController.swift in Sources */,
 				A6E462F11BA76431004FB8A9 /* SocketAnyEvent.swift in Sources */,
+				A6173F8D1BAA4EC60055E2AA /* ShowBroadcastDetailsViewController.swift in Sources */,
 				A6E462FF1BA76855004FB8A9 /* ShowArtistOrAlbumDetailsDelegate.swift in Sources */,
 				A6E462E01BA64CCE004FB8A9 /* SearchResultsArtistOrAlbumTableViewCell.swift in Sources */,
 				A6E462FD1BA76431004FB8A9 /* WebSocket.swift in Sources */,
 				A6E462FA1BA76431004FB8A9 /* SocketParser.swift in Sources */,
 				A6E462DE1BA63CB7004FB8A9 /* SearchResultTrackTableViewCell.swift in Sources */,
 				A6E462F01BA76431004FB8A9 /* SocketAckManager.swift in Sources */,
+				A6D665B61BA8B6080035538D /* OvercastServerHTTPDelegate.swift in Sources */,
 				A6E462F71BA76431004FB8A9 /* SocketIOClientStatus.swift in Sources */,
 				A6A8997C1B9F6A1B009A4877 /* TabBarController.swift in Sources */,
 				A6E462F81BA76431004FB8A9 /* SocketLogger.swift in Sources */,
 				A661DDA61B9E36E600AC9F9D /* AppDelegate.swift in Sources */,
-				A6E462DA1BA613C0004FB8A9 /* PlaylistDelegate.swift in Sources */,
+				A6E462DA1BA613C0004FB8A9 /* BroadcastDelegate.swift in Sources */,
+				A6D665B81BA8BF240035538D /* SwiftyJSON.swift in Sources */,
 				A6E463031BA76CB1004FB8A9 /* ArtistOrAlbumDetailsTableViewController.swift in Sources */,
 				A6E462F61BA76431004FB8A9 /* SocketIOClient.swift in Sources */,
 			);

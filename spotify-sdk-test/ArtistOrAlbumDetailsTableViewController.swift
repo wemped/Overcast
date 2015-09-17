@@ -12,7 +12,7 @@ class ArtistOrAlbumDetailsTableViewController: UITableViewController {
     
     var partialArtist : SPTPartialArtist!
     var partialAlbum : SPTPartialAlbum!
-    var playlistDelegate : PlaylistDelegate!
+    var broadcastDelegate : BroadcastDelegate!
     var dismissDelegate : SearchViewController!
 
     override func viewDidLoad() {

@@ -9,15 +9,18 @@
 import UIKit
 
 class LoginViewController: UIViewController, SPTAudioStreamingPlaybackDelegate {
-    let ClientID = "eca84f057c5e43f7a990d771752d2885"
-    let CallBackURL = "spotifysdktest://returnafterlogin"
+    let globals = Globals()
+    var ClientID : String!
+    var CallBackURL : String!
     /*You will need to change these for testing on localhost or your own phone!*/
     /*Also needs to change in AppDelegate*/
-    let TokenSwapURL = "http://192.168.1.160/swap"
-    let TokenRefreshServiceURL = "http://192.168.1.160:1234/refresh"
-    let RailsServerUrl = "http://192.168.1.9:3000"
+    var TokenSwapURL : String!
+    var TokenRefreshServiceURL :String!
+    var RailsServerUrl : String!
     var session: SPTSession!
     var sentPassword : String?
+    var UserID : Int?
+    var BroadcastID : Int?
     
     @IBOutlet weak var confirmPasswordTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
@@ -32,13 +35,18 @@ class LoginViewController: UIViewController, SPTAudioStreamingPlaybackDelegate {
         If we do call checkSpotifyAccount
     */
     override func viewDidLoad() {
+        self.ClientID = globals.SpotifyClientID
+        self.CallBackURL = globals.SpotifyCallbackUrl
+        self.TokenRefreshServiceURL = globals.AuthenticateServer + "/refresh"
+        self.TokenSwapURL = globals.AuthenticateServer + "/swap"
+        self.RailsServerUrl = globals.RailsServer
         print("loaded")
         super.viewDidLoad()
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateAfterFirstLogin", name: "loginSuccesful", object: nil)
         let userDefaults = NSUserDefaults.standardUserDefaults()
         
         /*FOR TESTING ONLY - DELETE AFTER*/
-        self.checkSpotifyAccount()
+//        self.checkSpotifyAccount()
         /* ----------------------------- */
         //Hide everything
         spotifyLoginButton.hidden = true
@@ -48,18 +56,21 @@ class LoginViewController: UIViewController, SPTAudioStreamingPlaybackDelegate {
         confirmPasswordTextField.hidden = true
         registerButton.hidden = true
         //Check if we have Overcast username and password saved on user preferences
-//        let username = userDefaults.stringForKey("OvercastUsername")
-//        let password = userDefaults.stringForKey("OvercastPassword")
-//        if username != nil && password != nil {
-//            self.checkSpotifyAccount()
-//        }else{
-//            //show registration stuff
-//            registerLabel.hidden = false
-//            usernameTextField.hidden = false
-//            passwordTextField.hidden = false
-//            confirmPasswordTextField.hidden = false
-//            registerButton.hidden = false
-//        }
+        let username = userDefaults.stringForKey("OvercastUsername")
+        let playlistID = userDefaults.stringForKey("OvercastBroadcastingPlaylistID")
+        let userID = userDefaults.stringForKey("OvercastUserID")
+        if username != nil && playlistID != nil && userID != nil {
+            self.UserID = Int(userID!)
+            self.BroadcastID = Int(playlistID!)
+            self.checkSpotifyAccount()
+        }else{
+//            show registration stuff
+            registerLabel.hidden = false
+            usernameTextField.hidden = false
+            passwordTextField.hidden = false
+            confirmPasswordTextField.hidden = false
+            registerButton.hidden = false
+        }
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -88,6 +99,7 @@ class LoginViewController: UIViewController, SPTAudioStreamingPlaybackDelegate {
         Creates a user on postgres if valid username and password
     */
     @IBAction func registerButtonPressed(sender: UIButton) {
+        view.endEditing(true)
         let username = self.usernameTextField.text
         let password = self.passwordTextField.text
         let confPassword = self.confirmPasswordTextField.text
@@ -125,25 +137,29 @@ class LoginViewController: UIViewController, SPTAudioStreamingPlaybackDelegate {
         If login was good save the username/password in userdefaults
     */
     func handleOvercastLoginResponse(data: NSData?, response: NSURLResponse?, error: NSError?){
-        do {
-            if let JSONObject: AnyObject? = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers){
-                print (JSONObject!)
-                if let object = JSONObject as? NSMutableArray{
-                    if let user = object[0] as? NSDictionary{
-                        let username = user["username"]
-                        let password = self.sentPassword
-                        let userDefaults = NSUserDefaults.standardUserDefaults()
-                        userDefaults.setObject(username, forKey: "OvercastUsername")
-                        userDefaults.setObject(password, forKey: "OvercastPassword")
-                        self.checkSpotifyAccount()
-                        return
-                    }
-                }
-            }
-            //HANDLE LOGIN FAILURE
-        }catch{
-            print("Couldn't create json object from response")
+        let json = JSON(data: data!)
+        print(json)
+        print(json[0]["username"])
+        let username = json[0]["username"].string
+        let playlistID = json[0]["playlist_id"].int
+        let userID = json[0]["user_id"].int
+        if username != nil && playlistID != nil && userID != nil{
+            print("login success")
+            let userDefaults = NSUserDefaults.standardUserDefaults()
+            userDefaults.setObject(username, forKey: "OvercastUsername")
+            userDefaults.setInteger(playlistID!, forKey: "OvercastBroadcastingPlaylistID")
+            userDefaults.setInteger(userID!, forKey: "OvercastUserID")
+            self.UserID = userID!
+            self.BroadcastID = playlistID!
+            self.usernameTextField.hidden = true
+            self.passwordTextField.hidden = true
+            self.confirmPasswordTextField.hidden = true
+            self.registerButton.hidden = true
+            self.registerLabel.hidden = true
+            self.checkSpotifyAccount()
+            return
         }
+        //HANDLE INCORRECT PASSWORD OR USERNAME TAKEN
     }
     /*
         Check user defaults for spotify session
@@ -175,9 +191,11 @@ class LoginViewController: UIViewController, SPTAudioStreamingPlaybackDelegate {
                 self.segueToMainScreen()
             }
         }else{
-            spotifyLoginButton.hidden = false
+            print("??juhkhk")
+            dispatch_async(dispatch_get_main_queue()){
+                self.spotifyLoginButton.hidden = false
+            }
         }
-
     }
     
     //MARK: - Navigation
@@ -191,6 +209,8 @@ class LoginViewController: UIViewController, SPTAudioStreamingPlaybackDelegate {
         if segue.identifier == "loginSuccessSegue" {
             let tabController = segue.destinationViewController as! TabBarController
             tabController.session = self.session
+            tabController.UserID = self.UserID
+            tabController.BroadcastID = self.BroadcastID
         }
     }
 }

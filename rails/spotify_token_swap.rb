@@ -19,6 +19,12 @@ SPOTIFY_ACCOUNTS_ENDPOINT = URI.parse("https://accounts.spotify.com")
 set :port, 1234 # Don't need on Heroku
 set :bind, '0.0.0.0' # IP address of the interface to listen on (all)
 
+post '/ajax_test' do
+
+    puts "GOT AJAX TEST"
+    puts params
+
+end
 
 post '/swap' do
 
@@ -65,7 +71,7 @@ post '/refresh' do
     http.use_ssl = true
 
     request = Net::HTTP::Post.new("/api/token")
-
+    puts request
     request.add_field("Authorization", AUTH_HEADER)
 
     encrypted_token = params[:refresh_token]
