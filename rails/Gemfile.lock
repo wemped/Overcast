@@ -37,6 +37,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.9.1.1)
+    encrypted_strings (0.3.3)
     erubis (2.7.0)
     execjs (2.6.0)
     hike (1.2.3)
@@ -54,6 +55,7 @@ GEM
     mime-types (2.6.2)
     minitest (5.8.0)
     multi_json (1.11.2)
+    net-http-persistent (2.9.4)
     pg (0.18.3-x86-mingw32)
     rack (1.5.5)
     rack-test (0.6.3)
@@ -78,6 +80,7 @@ GEM
     rake (10.4.2)
     rdoc (4.2.0)
       json (~> 1.4)
+    rubysl-base64 (2.0.0)
     sass (3.2.19)
     sass-rails (4.0.5)
       railties (>= 4.0.0, < 5.0)
@@ -115,12 +118,15 @@ PLATFORMS
 DEPENDENCIES
   bcrypt (~> 3.1.7)
   coffee-rails (~> 4.0.0)
+  encrypted_strings (~> 0.3.3)
   hirb
   jbuilder (~> 2.0)
   jquery-rails
+  net-http-persistent (~> 2.9.4)
   pg
   rails (= 4.1.8)
   rails-footnotes (>= 4.0.0, < 5)
+  rubysl-base64 (~> 2.0.0)
   sass-rails (~> 4.0.3)
   sdoc (~> 0.4.0)
   turbolinks

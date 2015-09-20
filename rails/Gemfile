@@ -41,3 +41,11 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin]
 gem 'hirb'
 
 gem 'rails-footnotes', '>= 4.0.0', '<5'
+
+# new stuff for spotify
+
+gem 'rubysl-base64', '~> 2.0.0'
+
+gem 'encrypted_strings', '~> 0.3.3'
+
+gem 'net-http-persistent', '~> 2.9.4'

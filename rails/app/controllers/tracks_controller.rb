@@ -1,26 +1,18 @@
 class TracksController < ApplicationController
+  skip_before_filter :verify_authenticity_token
 
   def create
-
-  	puts 'here'
-
-  	puts params
-
-  	data = JSON.parse(params[:track])
-
-  	puts 'other' 
-
-  	puts data 
-
-  	puts data["title"]
-  	
-  	puts 'after'
-
-  	Track.create(playlist_id: params[:playlist_id], title: params[:title], artist: params[:artist], album: params[:album], duration: params[:duration], playable_URI: params[:playable_URI], spotify_id: params[:spotify_id])
+    data = JSON.parse(params[:data])
+    # data = params[:data]
+  	Track.create(playlist_id: data["playlist_id"], title: data["title"], artist: data["artist"], album: data["album"], duration: data["duration"], playable_uri: data["playable_uri"], spotify_id: data["spotify_id"], spotify_uri: data["spotify_uri"])
+    render json: 'Track inserted into playlist'
   end
 
   def destroy
-  	Track.where(id: params[track_id], playlist_id: params[:playlist_id]).destroy_all
+    # data = params[:data]
+    data = JSON.parse(params[:data])
+  	Track.where(spotify_id: data["spotify_id"], playlist_id: data["playlist_id"]).destroy_all
+    render json: 'Track removed from playlist'
   end
 
 end
