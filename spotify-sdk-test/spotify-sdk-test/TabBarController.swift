@@ -19,7 +19,8 @@ class TabBarController : UITabBarController, BroadcastDelegate, BroadcasterSocke
     var playlistController : BroadcastViewController?
     var searchController : SearchViewController?
     var searchBroadcastsController : SearchBroadcastsTableViewController?
-    var RailsServerUrl = "http://192.168.1.102:3000"
+    var listenController : ShowBroadcastDetailsViewController?
+    var RailsServerUrl : String!
     var UserID : Int!
     var BroadcastID : Int!
     var socket  : SocketIOClient?
@@ -27,6 +28,7 @@ class TabBarController : UITabBarController, BroadcastDelegate, BroadcasterSocke
         Saves all its tab controllers in variables and sets the Home tab as the selected one
     */
     override func viewDidLoad() {
+        self.RailsServerUrl = globals.RailsServer
         socket = SocketIOClient(socketURL: globals.SocketURL)
         socket!.connect()
         socket!.on("connect"){
@@ -35,14 +37,13 @@ class TabBarController : UITabBarController, BroadcastDelegate, BroadcasterSocke
             self.socket?.emit("/set_socket_id", ["user_id" : IDString])
 //            self.joinStation("3", broadcaster_id : "1")
         }
-        socket!.on("request_playback_info"){
+        socket!.on("/request_playback_info"){
             data,ack in
-            print("got request_playback_info")
-            print(data)
+            self.replyCurrentTimeRequest(data)
         }
-        socket!.on("/testing"){
+        self.socket!.on("/reply_playback_info"){
             data, ack in
-            print("got a testing")
+            self.recievedPlaybackInfoReply(data)
         }
         let controllers = self.viewControllers
         for controller in controllers! {
@@ -57,6 +58,7 @@ class TabBarController : UITabBarController, BroadcastDelegate, BroadcasterSocke
                 self.searchBroadcastsController?.session = self.session
             }
         }
+        self.getBroadcast(String(self.BroadcastID), forView: self.playlistController!)
         self.selectedViewController = self.playlistController
     }
     
@@ -70,21 +72,11 @@ class TabBarController : UITabBarController, BroadcastDelegate, BroadcasterSocke
     
     // MARK: - Overcast Server HTTP Request functions
     func pushAddedTrackToServer(track: SPTPartialTrack) {
-        print("playlist id : \(self.BroadcastID)")
-        print("playable uri : \(track.playableUri)")
-        let dict = [
-            "spotify_id" : track.identifier,
-            "title" : track.name,
-            "artist" : track.artists[0].name,
-            "duration" : String(track.duration) ,
-            "playable_uri" : String(track.playableUri),
-            "spotify_uri" : String(track.uri),
-            "playlist_id" : String(self.BroadcastID)
-        ]
-        do {
-            let JSONData = try NSJSONSerialization.dataWithJSONObject(dict, options: NSJSONWritingOptions(rawValue: 0))
-            let JSONString = NSString(data: JSONData, encoding: NSUTF8StringEncoding)
-            if let urlToReq = NSURL(string: RailsServerUrl + "/tracks/create"){
+        dispatch_async(dispatch_get_global_queue(QOS_CLASS_DEFAULT, 0), {
+            () -> Void in
+            let ovcTrack = OVCTrack(spotifyTrack: track)
+            let JSONString = ovcTrack.toJSONString(self.BroadcastID)
+            if let urlToReq = NSURL(string: self.RailsServerUrl + "/tracks/create"){
                 let request = NSMutableURLRequest(URL: urlToReq)
                 request.HTTPMethod = "POST"
                 request.setValue("application/json", forHTTPHeaderField: "Accept")
@@ -96,9 +88,56 @@ class TabBarController : UITabBarController, BroadcastDelegate, BroadcasterSocke
                     self.playlistController!.addToPlaylist(track)
                 }).resume()
             }
-        }catch{
+        })
+    }
+    func removeTrackFromPlaylist(spotifyID: String, position: Int){
+        let dict = [
+            "playlist_id" : String(self.BroadcastID),
+            "spotify_id" : spotifyID
+        ]
+        do {
+            let JSONData = try NSJSONSerialization.dataWithJSONObject(dict, options: NSJSONWritingOptions(rawValue: 0))
+            let JSONString = NSString(data: JSONData, encoding: NSUTF8StringEncoding)
+            if let urlToReq = NSURL(string: RailsServerUrl + "/tracks/destroy"){
+                let request = NSMutableURLRequest(URL: urlToReq)
+                request.HTTPMethod = "POST"
+                request.setValue("application/json", forHTTPHeaderField: "Accept")
+                request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+                let bodyData = "data=\(JSONString!)"
+                request.HTTPBody = bodyData.dataUsingEncoding(NSUTF8StringEncoding)
+                NSURLSession.sharedSession().dataTaskWithRequest(request, completionHandler: {
+                    (data: NSData?, response: NSURLResponse?, error: NSError?) -> Void in
+                    self.playlistController!.removeTrack(spotifyID, position: position)
+                }).resume() 
+            }
+        }catch {
             
         }
+    }
+    func updatePlaylistPosition(playlistPosition: Int){
+        let dict = [
+            "playlist_id" : String(self.BroadcastID),
+            "playlist_position" : String(playlistPosition)
+        ]
+        do {
+            let JSONData = try NSJSONSerialization.dataWithJSONObject(dict, options: NSJSONWritingOptions(rawValue: 0))
+            let JSONString = NSString(data: JSONData, encoding: NSUTF8StringEncoding)
+            if let urlToReq = NSURL(string: RailsServerUrl + "/playlists/position"){
+                let request = NSMutableURLRequest(URL: urlToReq)
+                request.HTTPMethod = "POST"
+                request.setValue("application/json", forHTTPHeaderField: "Accept")
+                request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+                let bodyData = "data=\(JSONString!)"
+                request.HTTPBody = bodyData.dataUsingEncoding(NSUTF8StringEncoding)
+                NSURLSession.sharedSession().dataTaskWithRequest(request, completionHandler: {
+                    (data: NSData?, response: NSURLResponse?, error: NSError?) -> Void in
+                    //Show that you are broadcasting
+                }).resume()
+            }
+        }catch {
+            
+        }
+
     }
     func beginBroadcast(){
         let dict = [
@@ -136,25 +175,26 @@ class TabBarController : UITabBarController, BroadcastDelegate, BroadcasterSocke
                 print("returned")
                 dispatch_async(dispatch_get_main_queue(), {
                     () -> Void in
+                    if (error != nil) {
+                        print(error)
+                    }
                     var broadcasts = [[String:String]]()
                     let json = JSON(data: data!)
                     for (index,object) in json{
-//                        print(object["username"].stringValue)
+                        print(object["username"].stringValue)
                         var broadcast = [String:String]()
                         broadcast["broadcaster_username"] = object["username"].stringValue
                         broadcast["broadcaster_id"] = object["user_id"].stringValue
                         broadcast["playlist_id"] = object["playlist_id"].stringValue
                         print(broadcast)
                         broadcasts.append(broadcast)
-//                        print(broadcasts)
                     }
                     self.searchBroadcastsController!.recieveAllBroadcasts(broadcasts)
-
                 })
             }).resume()
         }
     }
-    func getBroadcast(broadcastID: String, forView: ShowBroadcastDetailsViewController){
+    func getBroadcast(broadcastID: String, forView: CanReceivePlaylist){
         let dict = [
             "playlist_id" : String(broadcastID)
         ]
@@ -173,22 +213,16 @@ class TabBarController : UITabBarController, BroadcastDelegate, BroadcasterSocke
                     (data: NSData?, response: NSURLResponse?, error: NSError?) -> Void in
                     dispatch_async(dispatch_get_main_queue(), {
                         () -> Void in
-                        let json = JSON(data: data!)
-                        print(json.object)
-                        var tracks = [[String:String]]()
-                        for (index, object) in json{
-                            var track = [String:String]()
-                            track["artist"] = object["artist"].stringValue
-                            track["duration"] = object["duration"].stringValue
-                            track["id"] = object["id"].stringValue
-                            track["playable_uri"] = object["playable_uri"].stringValue
-                            track["playlist_id"] = object["playlist_id"].stringValue
-                            track["spotify_id"] = object["spotify_id"].stringValue
-                            track["spotify_uri"] = object["spotify_uri"].stringValue
-                            track["title"] = object["title"].stringValue
-                            tracks.append(track)
+                        if data != nil{
+                            if let ovcTracks = OVCTrack.decodeArrayOfTracksFromJSONData(data!){
+                                let json = JSON(data: data!)
+                                let playlistPosition = json[0]["playlist_position"].intValue
+                                //                            print(json[0]["playlist_position"].stringValue)
+                                forView.receivedPlaylist(ovcTracks,position : playlistPosition)
+                            }
+                        }else{
+                            print("no response from server")
                         }
-                        forView.receivedPlaylist(tracks)
                     })
                 }).resume()
             }
@@ -202,17 +236,25 @@ class TabBarController : UITabBarController, BroadcastDelegate, BroadcasterSocke
     // MARK: - Broadcaster Socket Delegate functions
     func signalNextSongForced(){}
     func signalNextSong(){}
-    func replyCurrentTimeRequest(){}
+    func replyCurrentTimeRequest(data: NSArray?){
+        let json = JSON(data!)
+        let requester_id = json[0]["requester_id"].stringValue
+        var playbackInfo = self.playlistController!.getPlaybackInfo()!
+        playbackInfo["requested_id"] = requester_id
+        self.socket!.emit("/broadcaster/reply_playback_info", playbackInfo)
+    }
     func gotListenerJoin(){}
     func gotListenerLikeTrack(){}
+    
     // MARK: - Listener Socket Delegate functions
     func gotNextSongForced(){}
     func gotNextSong(){}
     func requestPlaybackInfo(playlist_id : String, broadcaster_id : String){
         print("sending playlist_id = " + playlist_id)
         let data = [
+            "requester_id" : String(self.UserID),
             "broadcaster_id" : broadcaster_id,
-            "playlist_id" : playlist_id
+            "broadcast_id" : playlist_id
         ]
         self.socket!.emit("/listener/request_playback_info", data)
     }
@@ -226,5 +268,13 @@ class TabBarController : UITabBarController, BroadcastDelegate, BroadcasterSocke
         self.socket!.emit("/listener/join", data)
     }
     func likeTrack(){}
-    func recievedCurrentTimeReply(){}
+    func recievedPlaybackInfoReply(data: NSArray?){
+
+        let json = JSON(data!)
+        let spotify_id = json[0]["track_spotify_id"].stringValue
+        let track_position = Double(json[0]["track_position"].stringValue)
+        let playlist_postition = json[0]["playlist_position"].intValue
+                print("recived playback info -> playlist position \(playlist_postition) and track position \(track_position)")
+        self.listenController!.beginListenAt(track_position!, playlistPosition : playlist_postition, onTrackSpotifyID : spotify_id)
+    }
 }

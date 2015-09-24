@@ -14,5 +14,5 @@ protocol ListenerSocketDelegate : class {
     func requestPlaybackInfo(playlist_id : String, broadcaster_id : String)
     func joinStation(playlist_id : String, broadcaster_id : String)
     func likeTrack()
-    func recievedCurrentTimeReply()
+    func recievedPlaybackInfoReply(data : NSArray?)
 }

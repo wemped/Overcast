@@ -11,7 +11,7 @@ import Foundation
 protocol BroadcasterSocketDelegate : class {
     func signalNextSongForced()
     func signalNextSong()
-    func replyCurrentTimeRequest()
+    func replyCurrentTimeRequest(data: NSArray?)
     func gotListenerJoin()
     func gotListenerLikeTrack()
 }

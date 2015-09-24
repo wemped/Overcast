@@ -11,5 +11,5 @@ import Foundation
 protocol OvercastServerHTTPDelegate : class{
     func pushAddedTrackToServer(track: SPTPartialTrack)
     func getAllBroadcasts()
-    func getBroadcast(broadcastID: String, forView: ShowBroadcastDetailsViewController)
+    func getBroadcast(broadcastID: String, forView: CanReceivePlaylist)
 }

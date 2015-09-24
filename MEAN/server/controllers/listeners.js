@@ -35,13 +35,12 @@ module.exports = (function (){
         //pass along request to broadcaster
         //if not update the listener
         request_playback_info : function(data,socket,io){
-            console.log("got request playback info");
-            console.log("playlist_id =  " + data.playlist_id);
-            if (io.sockets.sockets[data.broadcaster_id]){
-                console.log("Broadcaster socket is connected?");
-                io.sockets.socket(data.broadcaster_id).emit('/request_playback_info', data);
-            }else{
-                socket.emit('/no_broadcaster');
+            if (io.to(data.broadcaster_id)){
+                console.log("broadcaster is connected");
+                console.log("passing along request to " + data.broadcaster_id);
+                io.to(data.broadcaster_id).emit("/request_playback_info",data);
+            } else{
+                console.log("broadcaster not connected :[");
             }
         },
         //update broadcaster and update db

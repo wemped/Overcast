@@ -8,11 +8,11 @@
 
 import UIKit
 
-class ShowBroadcastDetailsViewController: UIViewController, UITableViewDataSource{
+class ShowBroadcastDetailsViewController: UIViewController, UITableViewDataSource, CanReceivePlaylist{
 
     @IBOutlet weak var tableView: UITableView!
     let globals = Globals()
-    var playlist : [[String:String]]?
+    var playlist : [OVCTrack]?
     var player : SPTAudioStreamingController!
     var session : SPTSession!
     var listener : ListenerSocketDelegate!
@@ -33,43 +33,38 @@ class ShowBroadcastDetailsViewController: UIViewController, UITableViewDataSourc
         // Dispose of any resources that can be recreated.
     }
     
-    func receivedPlaylist(tracks : [[String:String]]?){
+    func receivedPlaylist(tracks : [OVCTrack], position: Int){
         self.playlist = tracks
         dispatch_async(dispatch_get_main_queue(), { () -> Void in
-            if tracks == nil {
-                //error recieving broadcasts
-            }else{
-                self.playlist = tracks!
-            }
             self.tableView.reloadData()
-            print("set broadcasts")
         })
-        
-        
+    }
+    
+    func beginListenAt(trackPosition : Double, playlistPosition : Int, onTrackSpotifyID : String){
+        let partialTrack = self.playlist![playlistPosition]
+        let playableUri = partialTrack.playableURI
+        let trackUri = partialTrack.spotifyURI
+        self.player!.loginWithSession(self.session) {
+            (error: NSError!) -> Void in
+            
+            SPTRequest.requestItemAtURI(trackUri, withSession: nil, callback: {
+                (error: NSError!, object: AnyObject!) -> Void in
+                let track = object as! SPTTrack
+                self.player!.playURI(track.playableUri, callback: {
+                    (error : NSError!) -> Void in
+                    self.player.seekToOffset(NSTimeInterval(trackPosition), callback: {
+                        (error: NSError!) -> Void in
+                        print("SEEKING")
+                    })
+                })
+            })
+        }
     }
     // MARK: - UI Button handlers
     @IBAction func playButtonPressed(sender: UIButton) {
         print("^_^_^_^_^_^_")
         self.listener.joinStation(self.playlist_id, broadcaster_id: broadcaster_id)
         self.listener.requestPlaybackInfo(self.playlist_id, broadcaster_id: broadcaster_id)
-//        print(self.playlist![0]["spotify_uri"])
-////        player.playURI(NSURL(string: playlist![0]["playable_uri"]!)) {
-////            (error:NSError!) -> Void in
-////            print("???")
-////        }
-//        //do login thing
-//        player!.loginWithSession(self.session) {
-//            (error: NSError!) -> Void in
-//            SPTRequest.requestItemAtURI(NSURL(string: self.playlist![0]["spotify_uri"]!), withSession: nil) {
-//                (error: NSError?, object:AnyObject!) -> Void in
-//                let track = object as! SPTTrack
-//                print(track)
-//                self.player!.playURI(track.playableUri, callback: {
-//                    (error:NSError!) -> Void in
-//                    print("yo")
-//                })
-//            }
-//        }
     }
     
     
@@ -83,8 +78,8 @@ class ShowBroadcastDetailsViewController: UIViewController, UITableViewDataSourc
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let dequeued = tableView.dequeueReusableCellWithIdentifier("playlistTrackCell")
         let cell = dequeued as! PlaylistTrackCell
-        cell.trackArtistLabel.text = self.playlist![indexPath.row]["artist"]
-        cell.trackTitleLabel.text = self.playlist![indexPath.row]["title"]
+        cell.trackArtistLabel.text = self.playlist![indexPath.row].artist
+        cell.trackTitleLabel.text = self.playlist![indexPath.row].title
         return cell
     }
     /*

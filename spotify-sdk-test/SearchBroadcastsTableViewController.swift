@@ -75,6 +75,7 @@ class SearchBroadcastsTableViewController: UITableViewController {
             showDetailsViewController.playlist_id = broadcast["playlist_id"]
             showDetailsViewController.broadcaster_id = broadcast["broadcaster_id"]
             showDetailsViewController.broadcaster_username = broadcast["broadcaster_username"]
+            self.tabController.listenController = showDetailsViewController
         }
     }
 }
