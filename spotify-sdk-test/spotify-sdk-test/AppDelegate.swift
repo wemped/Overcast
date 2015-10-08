@@ -1,4 +1,4 @@
-//
+    //
 //  AppDelegate.swift
 //  spotify-sdk-test
 //

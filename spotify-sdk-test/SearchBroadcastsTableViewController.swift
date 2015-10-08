@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SearchBroadcastsTableViewController: UITableViewController {
+class SearchBroadcastsTableViewController: UITableViewController, BackButtonDelegate{
     
     var tabController : TabBarController!
     var broadcasts = [[String:String]]()
@@ -75,7 +75,11 @@ class SearchBroadcastsTableViewController: UITableViewController {
             showDetailsViewController.playlist_id = broadcast["playlist_id"]
             showDetailsViewController.broadcaster_id = broadcast["broadcaster_id"]
             showDetailsViewController.broadcaster_username = broadcast["broadcaster_username"]
+            showDetailsViewController.backDelegate = self
             self.tabController.listenController = showDetailsViewController
         }
+    }
+    func backButtonPressedFrom(controller: UIViewController) {
+        dismissViewControllerAnimated(true, completion: nil)
     }
 }

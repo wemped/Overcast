@@ -121,7 +121,7 @@ class LoginViewController: UIViewController, SPTAudioStreamingPlaybackDelegate {
         Sends a POST request with registration info to the rails server
     */
     func loginRequest(username: String, password: String, confPassword: String?){
-        if let urlToReq = NSURL(string: RailsServerUrl + "/users"){
+        if let urlToReq = NSURL(string: RailsServerUrl + "/users/login"){
             let request = NSMutableURLRequest(URL: urlToReq)
             request.HTTPMethod = "POST"
             var bodyData = "username=\(username)"
@@ -139,10 +139,10 @@ class LoginViewController: UIViewController, SPTAudioStreamingPlaybackDelegate {
     func handleOvercastLoginResponse(data: NSData?, response: NSURLResponse?, error: NSError?){
         let json = JSON(data: data!)
         print(json)
-        print(json[0]["username"])
-        let username = json[0]["username"].string
-        let playlistID = json[0]["playlist_id"].int
-        let userID = json[0]["user_id"].int
+        print(json["username"])
+        let username = json["username"].string
+        let playlistID = json["playlist_id"].int
+        let userID = json["user_id"].int
         if username != nil && playlistID != nil && userID != nil{
             print("login success")
             let userDefaults = NSUserDefaults.standardUserDefaults()

@@ -9,8 +9,8 @@
 import Foundation
 
 class Globals {
-    let SocketURL : String = "http://192.168.1.165:1337"//local
-    let RailsServer = "http://192.168.1.104:3000"
+    let SocketURL : String = "http://192.168.1.8:1337"//local
+    let RailsServer = "http://192.168.1.8:1337"
     let AuthenticateServer = "http://192.168.1.8:1234"//local
     let SpotifyClientID = "eca84f057c5e43f7a990d771752d2885"
     let SpotifyCallbackUrl = "spotifysdktest://returnafterlogin"

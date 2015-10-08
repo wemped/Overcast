@@ -40,7 +40,16 @@ class OVCPlaylist {
         }
         return nil
     }
+    func getCurrentTrack() -> SPTTrack?{
+        let tuple = self.trackAtIndex(self.playlistPosition)
+        if (tuple.1 == TrackType.Spotify){
+            return tuple.0 as! SPTTrack
+        }else{
+            return nil
+        }
+    }
     func addTrackToPlaylist(partial : SPTPartialTrack){
+        print("in the playlist object")
         let track = OVCTrack(spotifyTrack: partial)
         self.toLoad.append(track)
         let position = self.loaded.count + self.toLoad.count - 1
@@ -54,6 +63,7 @@ class OVCPlaylist {
     func loadInBackground(ovcTrack: OVCTrack, position: Int){
         dispatch_async(dispatch_get_global_queue(QOS_CLASS_DEFAULT, 0), {
             () -> Void in
+            print(ovcTrack.spotifyURI)
             SPTRequest.requestItemAtURI(ovcTrack.spotifyURI, withSession: self.session, callback: {
                 (error: NSError!, object: AnyObject!) -> Void in
                 let track = object as! SPTTrack

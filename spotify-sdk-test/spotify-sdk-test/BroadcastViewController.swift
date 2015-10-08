@@ -73,7 +73,7 @@ class BroadcastViewController : UIViewController, SPTAudioStreamingPlaybackDeleg
     }
     @IBAction func playButtonClicked(sender: UIButton) {
         print("clicked play")
-        self.tabController.beginBroadcast()
+        self.tabController.updateBroadcast(true)
         self.playNextSong()
         sender.hidden = true
     }
@@ -167,6 +167,7 @@ class BroadcastViewController : UIViewController, SPTAudioStreamingPlaybackDeleg
         Can be called from other views
     */
     func addToPlaylist(partialTrack: SPTPartialTrack){
+        print("in the broadcast view controller")
         self.playlist!.addTrackToPlaylist(partialTrack)
 //        let track = OVCTrack(spotifyTrack: partialTrack)
 //        self.queueToLoad.append(track)
@@ -247,7 +248,7 @@ class BroadcastViewController : UIViewController, SPTAudioStreamingPlaybackDeleg
     */
     func playNextSong() {
         self.playButton.hidden = true
-        if let track = self.playlist!.getFirst(){
+        if let track = self.playlist!.getCurrentTrack(){
             self.player!.loginWithSession(self.session, callback: {
                 (error: NSError!) -> Void in
                 if error != nil{
@@ -258,6 +259,7 @@ class BroadcastViewController : UIViewController, SPTAudioStreamingPlaybackDeleg
                     (error: NSError!) -> Void in
                     self.resetNowPlayingInfo(track: track)
                     self.tabController.updatePlaylistPosition(self.playlist!.playlistPosition)
+                    
                 })
             })
         }else{

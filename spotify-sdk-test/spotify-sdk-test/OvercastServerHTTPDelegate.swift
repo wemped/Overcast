@@ -9,7 +9,7 @@
 import Foundation
 
 protocol OvercastServerHTTPDelegate : class{
-    func pushAddedTrackToServer(track: SPTPartialTrack)
+    func pushAddedTrackToServer(track: SPTPartialTrack, position: Int)
     func getAllBroadcasts()
     func getBroadcast(broadcastID: String, forView: CanReceivePlaylist)
 }

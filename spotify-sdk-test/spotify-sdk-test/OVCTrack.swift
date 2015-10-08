@@ -17,6 +17,7 @@ class OVCTrack{
     let spotifyURI : NSURL
     let spotifyID : String
     var broadcastID : Int?
+    var position : Int?
     
     init(spotifyTrack : SPTPartialTrack){
         self.title = spotifyTrack.name
@@ -50,10 +51,10 @@ class OVCTrack{
         self.playableURI = NSURL(string: json["playable_uri"].stringValue)!
         self.spotifyURI = NSURL(string: json["spotify_uri"].stringValue)!
         self.spotifyID = json["spotify_id"].stringValue
-//        print(json["playlist_position"])
+        print(self.spotifyURI)
     }
     
-    func toJSONString(broadcastID : Int?) -> NSString?{
+    func toJSONString(broadcastID : Int?, position : Int?) -> NSData?{
         var dict = [
             "title"       : self.title,
             "artist"      : self.artist,
@@ -65,10 +66,15 @@ class OVCTrack{
         if let playlist_id = broadcastID {
             dict["playlist_id"] = String(playlist_id)
         }
+        if let index = position{
+            dict["position"] = String(index)
+        }
+        let parameters = dict as Dictionary<String,String>
         do {
-            let JSONData = try NSJSONSerialization.dataWithJSONObject(dict, options: NSJSONWritingOptions(rawValue:0))
-            let JSONString = NSString(data: JSONData, encoding: NSUTF8StringEncoding)
-            return JSONString
+            let JSONData = try NSJSONSerialization.dataWithJSONObject(parameters, options: NSJSONWritingOptions(rawValue:0))
+//            let JSONString = NSString(data: JSONData, encoding: NSUTF8StringEncoding)
+//            return JSONString
+            return JSONData
         }catch{
             return nil
         }
@@ -76,8 +82,10 @@ class OVCTrack{
     static func decodeArrayOfTracksFromJSONData(data : NSData) -> [OVCTrack]?{
         let json = JSON(data: data)
         print(json.object)
+        print(json["tracks"].arrayValue)
+        let arr = json["tracks"].arrayValue
         var tracks = [OVCTrack]()
-        for (index, object) in json{
+        for (object) in arr{
             tracks.append(OVCTrack(json: object))
         }
         return tracks
